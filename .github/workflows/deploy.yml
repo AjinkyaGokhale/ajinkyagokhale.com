@@ -110,11 +110,6 @@ jobs:
           --exclude "*.pdf" \
           --exclude "*.xml"
 
-    - name: Ensure private S3 bucket configuration
-      run: |
-        echo "S3 bucket is private and served only through CloudFront"
-        aws s3api get-public-access-block --bucket ${{ secrets.S3_BUCKET_NAME }}
-
     - name: Invalidate CloudFront cache
       run: |
         aws cloudfront create-invalidation \
