@@ -97,6 +97,9 @@ export default function Hero() {
                   style={{ fontSize: 'clamp(1.6rem, 5vw, 3.2rem)' }}>
                 <span className="text-text-primary">Ajinkya </span>
                 <TypewriterText text="Gokhale" speed={80} className="text-green-bright text-glow" />
+                <span style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
+                  — Software Engineer | IoT, AWS Cloud, Embedded Systems & System Design
+                </span>
               </h1>
               <p className="font-pixel text-green-mid mt-2 tracking-wider leading-relaxed"
                  style={{ fontSize: 'clamp(6px, 1.8vw, 8px)' }}>
