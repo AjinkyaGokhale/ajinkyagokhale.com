@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Press+Start+2P&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0d0d0d;
+  --surface: #111611;
+  --border: #1f2e1f;
+  --green-dim: #2d6a2d;
+  --green-mid: #39a839;
+  --green-bright: #00ff88;
+  --green-neon: #39ff14;
+  --text-primary: #d4f0d4;
+  --text-muted: #5a7a5a;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-pixel: 'Press Start 2P', monospace;
+  --navbar-h: 56px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #0d0d0d;
+  color: #d4f0d4;
+  font-family: 'JetBrains Mono', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Prevent font size inflation on mobile */
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Sections sit below fixed navbar when scrolled to */
+section[id] {
+  scroll-margin-top: var(--navbar-h);
+}
+
+/* Scrollbar — desktop only */
+@media (hover: hover) {
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0d0d0d; }
+  ::-webkit-scrollbar-thumb { background: #2d6a2d; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #39a839; }
+}
+
+/* Blinking cursor */
+.cursor-blink {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: #00ff88;
+  animation: blink 0.7s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  flex-shrink: 0;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Nav underline animation */
+.nav-link-underline {
+  position: relative;
+}
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #00ff88;
+  transition: width 0.25s ease;
+}
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after {
+  width: 100%;
+}
+
+/* Scanline overlay */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Button glow on hover */
+.btn-glow:hover {
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.4), 0 0 24px rgba(0, 255, 136, 0.15);
+}
+
+/* iOS 26 liquid glass — shared edge lens mixin */
+.liquid-glass {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.03) 0%,
+    rgba(17,22,17,0.12) 50%,
+    rgba(0,255,136,0.015) 100%
+  );
+  backdrop-filter: blur(64px) brightness(1.04) saturate(180%) contrast(1.01);
+  -webkit-backdrop-filter: blur(64px) brightness(1.04) saturate(180%) contrast(1.01);
+  border: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 8px 40px rgba(0,0,0,0.2);
+  overflow: visible;
+}
+
+/* Edge lens ring — sharper backdrop creates magnifying-glass refraction at border */
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.22), rgba(0,255,136,0.08), rgba(255,255,255,0.12));
+  backdrop-filter: blur(1px) brightness(1.8) saturate(400%) contrast(1.4);
+  -webkit-backdrop-filter: blur(1px) brightness(1.8) saturate(400%) contrast(1.4);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Terminal card — iOS 26 liquid glass */
+.terminal-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.03) 0%,
+    rgba(17,22,17,0.12) 50%,
+    rgba(0,255,136,0.015) 100%
+  );
+  backdrop-filter: blur(64px) brightness(1.04) saturate(180%) contrast(1.01);
+  -webkit-backdrop-filter: blur(64px) brightness(1.04) saturate(180%) contrast(1.01);
+  border: none;
+  border-radius: 16px;
+  position: relative;
+  overflow: visible;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 8px 40px rgba(0,0,0,0.2);
+}
+.terminal-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.22), rgba(0,255,136,0.08), rgba(255,255,255,0.12));
+  backdrop-filter: blur(1px) brightness(1.8) saturate(400%) contrast(1.4);
+  -webkit-backdrop-filter: blur(1px) brightness(1.8) saturate(400%) contrast(1.4);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Green glow text */
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* Pixel skill bar */
+.pixel-bar-fill {
+  background: linear-gradient(90deg, #2d6a2d, #00ff88);
+  transition: width 1s ease-out;
+}
+
+/* Reduce motion — Framer Motion respects this via useReducedMotion */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blink { animation: none; opacity: 1; }
+}
+
+/* Pixel avatar scales down on very small screens */
+.avatar-wrap {
+  transform-origin: center top;
+}
+@media (max-width: 320px) {
+  .avatar-wrap {
+    transform: scale(0.82);
+  }
+}
+
+/* Responsive font-pixel utility */
+.pixel-heading {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(9px, 2.5vw, 14px);
+}
+
+/* Pixel grid overlay on resume paper */
+.resume-pixel-paper {
+  position: relative;
+}
+.resume-pixel-paper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px);
+  background-size: 4px 4px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Print: redirect to PDF (beforeprint JS fires first; this is fallback) */
+@media print {
+  body > * { display: none !important; }
+  body::after {
+    content: 'Loading CV PDF…';
+    display: block;
+    text-align: center;
+    padding: 4rem;
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: #000;
+  }
+}
