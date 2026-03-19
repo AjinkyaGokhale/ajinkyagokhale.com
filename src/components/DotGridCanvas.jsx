@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const DOT_SIZE = 10
 const GAP = 3
@@ -8,6 +8,7 @@ const LERP_SPEED = 0.08  // smoothing factor for glow movement
 
 export default function DotGridCanvas() {
   const canvasRef = useRef(null)
+  const [showGyroBtn, setShowGyroBtn] = useState(false)
   const targetRef = useRef({ x: -9999, y: -9999 })  // where glow should go
   const glowRef  = useRef({ x: -9999, y: -9999 })   // current interpolated position
   const dotsRef = useRef([])
@@ -15,6 +16,8 @@ export default function DotGridCanvas() {
   const timeRef = useRef(0)
   const touchActiveRef = useRef(false)
   const isTouchDeviceRef = useRef(false)
+  const attachGyroRef = useRef(null)
+  const gyroActiveRef = useRef(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -96,7 +99,10 @@ export default function DotGridCanvas() {
     }
     function onTouchEnd() {
       touchActiveRef.current = false
-      // Let gyro take over smoothly — don't reset position
+      // If no gyro, fade the glow off-screen so it doesn't stick
+      if (!gyroActiveRef.current) {
+        targetRef.current = { x: -9999, y: -9999 }
+      }
     }
 
     // ── Gyroscope — tilt moves an ambient glow when not touching ──
@@ -110,8 +116,10 @@ export default function DotGridCanvas() {
     }
 
     function attachGyro() {
+      gyroActiveRef.current = true
       window.addEventListener('deviceorientation', onOrientation)
     }
+    attachGyroRef.current = attachGyro
 
     resize()
     window.addEventListener('resize', resize)
@@ -121,18 +129,13 @@ export default function DotGridCanvas() {
     window.addEventListener('touchmove',  onTouchMove,  { passive: true })
     window.addEventListener('touchend',   onTouchEnd)
 
-    // iOS 13+ requires permission for DeviceOrientationEvent
+    // iOS 13+ requires explicit user gesture via requestPermission
     if (typeof DeviceOrientationEvent !== 'undefined') {
       if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        // Request on first touch so we have a user gesture
-        const requestGyro = () => {
-          DeviceOrientationEvent.requestPermission()
-            .then(res => { if (res === 'granted') attachGyro() })
-            .catch(() => {})
-          window.removeEventListener('touchstart', requestGyro)
-        }
-        window.addEventListener('touchstart', requestGyro, { once: true })
+        // Show a button so the user can grant permission (iOS requires a real tap)
+        setShowGyroBtn(true)
       } else {
+        // Android / non-permission devices — attach directly
         attachGyro()
       }
     }
@@ -151,16 +154,50 @@ export default function DotGridCanvas() {
     }
   }, [])
 
+  function handleGyroPermission() {
+    DeviceOrientationEvent.requestPermission()
+      .then(res => {
+        if (res === 'granted') attachGyroRef.current?.()
+      })
+      .catch(() => {})
+      .finally(() => setShowGyroBtn(false))
+  }
+
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 0,
-        pointerEvents: 'none',
-        background: '#0d0d0d',
-      }}
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: 'none',
+          background: '#0d0d0d',
+        }}
+      />
+      {showGyroBtn && (
+        <button
+          onClick={handleGyroPermission}
+          style={{
+            position: 'fixed',
+            bottom: '24px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 9999,
+            background: '#0d0d0d',
+            border: '1px solid #2d6a2d',
+            color: '#4ade80',
+            fontFamily: 'JetBrains Mono, monospace',
+            fontSize: '11px',
+            padding: '8px 16px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            letterSpacing: '0.05em',
+          }}
+        >
+          [ enable gyro effect ]
+        </button>
+      )}
+    </>
   )
 }

@@ -9,7 +9,7 @@ const GITHUB_URL = 'https://github.com/AjinkyaGokhale'
 const LINKEDIN_URL = 'https://linkedin.com/in/gokhaleajinkya'
 const TAGS = ['IoT & Cloud', 'Embedded Systems', 'Full-Stack', 'AWS Certified']
 
-const BIO_MAIN = `Founding engineer at Nineti GmbH, building IoT infrastructure at scale — 10,000+ connected devices on AWS. I bridge hardware and cloud: PCB design and embedded firmware to serverless backends and React frontends. Based in Stuttgart, tinkering with homelabs and local LLMs in my spare time. Currently writing my Master's thesis — `
+const BIO_MAIN = `Founding engineer at Nineti GmbH, building IoT infrastructure at scale — managing production devices on AWS. I work across the full stack: PCB design, embedded firmware, distributed systems, and system design from HLD to deployment. Language-agnostic — C, Python, TypeScript, whatever the problem needs. Based in Stuttgart, tinkering with homelabs and local LLMs in my spare time. Currently writing my Master's thesis — `
 const BIO_HIGHLIGHT = `available full-time from Oct 2026.`
 
 function BioTyper() {
