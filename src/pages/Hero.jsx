@@ -49,7 +49,9 @@ const item = {
 }
 
 const btnStyle = {
-  background: 'transparent',
+  background: 'rgba(13, 20, 13, 0.85)',
+  backdropFilter: 'blur(24px) saturate(160%)',
+  WebkitBackdropFilter: 'blur(24px) saturate(160%)',
   color: '#d4f0d4',
   border: '1px solid #2d6a2d',
 }
