@@ -52,6 +52,21 @@ export default function DotGridCanvas() {
       glowRef.current.x = lerp(glowRef.current.x, targetRef.current.x, LERP_SPEED)
       glowRef.current.y = lerp(glowRef.current.y, targetRef.current.y, LERP_SPEED)
 
+      // Gyro-driven scroll — top/bottom 20% of screen triggers scroll
+      if (gyroActiveRef.current && !touchActiveRef.current) {
+        const h = window.innerHeight
+        const gy = glowRef.current.y
+        const ZONE = 0.20
+        const MAX_SPEED = 12
+        if (gy < h * ZONE) {
+          const t = 1 - gy / (h * ZONE)
+          window.scrollBy(0, -Math.round(t * MAX_SPEED))
+        } else if (gy > h * (1 - ZONE)) {
+          const t = (gy - h * (1 - ZONE)) / (h * ZONE)
+          window.scrollBy(0, Math.round(t * MAX_SPEED))
+        }
+      }
+
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       const mx = glowRef.current.x
       const my = glowRef.current.y
