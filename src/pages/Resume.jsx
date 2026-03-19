@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Download, ExternalLink, Mail, Phone, Linkedin, Github, MapPin, ChevronDown } from 'lucide-react'
 
-const RESUME_PDF = '/Andy-cv.pdf'
+const RESUME_PDF = '/static/Andy-cv.pdf'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -269,7 +269,7 @@ export default function Resume() {
                     {['AWS Certified AI Practitioner', 'AWS Certified Solutions Architect'].map(cert => (
                       <div key={cert} className="flex items-center gap-2 px-3 py-1.5 rounded"
                            style={{ background: '#f0f7f0', border: '1px solid #c8dfc8' }}>
-                        <img src="/aws.png" alt="AWS" style={{ width: '26px', height: '16px', objectFit: 'contain' }} />
+                        <img src="/static/aws.png" alt="AWS" style={{ width: '26px', height: '16px', objectFit: 'contain' }} />
                         <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '11px', color: '#1a1a1a' }}>{cert}</span>
                         <span style={{ color: '#2d6a2d', fontSize: '11px', fontWeight: 700 }}>✓</span>
                       </div>

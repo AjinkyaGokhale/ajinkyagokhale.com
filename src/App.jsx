@@ -31,7 +31,7 @@ export default function App() {
 
   // Redirect to PDF when user tries to print — gives a clean CV print
   useEffect(() => {
-    const handler = () => window.location.replace('/Andy-cv.pdf')
+    const handler = () => window.location.replace('/static/Andy-cv.pdf')
     window.addEventListener('beforeprint', handler)
     return () => window.removeEventListener('beforeprint', handler)
   }, [])

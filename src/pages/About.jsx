@@ -134,7 +134,7 @@ export default function About() {
               <li key={c.name} className="flex items-center gap-3">
                 <div className="flex-shrink-0 w-12 h-10 flex items-center justify-center rounded p-1.5"
                      style={{ background: '#1a1a1a', border: '1px solid #2d6a2d' }}>
-                  <img src="/aws.png" alt="AWS" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  <img src="/static/aws.png" alt="AWS" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </div>
                 <div>
                   <p className="font-mono text-xs sm:text-sm text-text-primary font-medium leading-snug">{c.name}</p>

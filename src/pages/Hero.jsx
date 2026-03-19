@@ -187,7 +187,7 @@ export default function Hero() {
               }}
             >
               <img
-                src="/avator.png"
+                src="/static/avator.png"
                 alt="Ajinkya Gokhale"
                 style={{ width: '100%', height: 'auto', display: 'block', filter: 'contrast(1.05) brightness(0.95)' }}
               />
