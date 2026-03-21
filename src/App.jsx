@@ -3,14 +3,19 @@ import { Heart } from 'lucide-react'
 import DotGridCanvas from './components/DotGridCanvas'
 import Navbar from './components/Navbar'
 import { ToastProvider } from './components/Toast'
+import { LanguageProvider, useLanguage } from './context/LanguageContext'
+import { translations } from './i18n/translations'
 import Hero from './pages/Hero'
 import About from './pages/About'
 import Projects from './pages/Projects'
 import Professional from './pages/Professional'
 import Resume from './pages/Resume'
 
-export default function App() {
+function AppInner() {
   const consoleFired = useRef(false)
+  const { lang } = useLanguage()
+  const t = translations[lang].footer
+
   useEffect(() => {
     if (consoleFired.current) return
     consoleFired.current = true
@@ -50,13 +55,21 @@ export default function App() {
       <footer className="relative z-10 liquid-glass" style={{ borderRadius: 0 }}>
         <div className="max-w-4xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="font-mono text-xs" style={{ color: '#5a8a6a' }}>
-            Made with <Heart size={11} fill="#ff4d6d" style={{ color: '#ff4d6d', display: 'inline', verticalAlign: 'middle', margin: '0 3px' }} /> in Stuttgart
+            {t.made} <Heart size={11} fill="#ff4d6d" style={{ color: '#ff4d6d', display: 'inline', verticalAlign: 'middle', margin: '0 3px' }} /> {t.in}
           </p>
           <p className="font-mono text-xs" style={{ color: '#4a7a5a' }}>
-            © {new Date().getFullYear()} Ajinkya Gokhale — All rights reserved
+            © {new Date().getFullYear()} Ajinkya Gokhale — {t.rights}
           </p>
         </div>
       </footer>
     </ToastProvider>
+  )
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppInner />
+    </LanguageProvider>
   )
 }

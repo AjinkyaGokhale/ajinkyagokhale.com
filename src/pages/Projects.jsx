@@ -1,69 +1,12 @@
 import { motion } from 'framer-motion'
-import { Github, ExternalLink, Cloud, Camera, Mail } from 'lucide-react'
+import { Github, Cloud, Camera, Mail } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 
-const PROJECTS = [
-  {
-    icon: Mail,
-    name: 'SwapMails',
-    subtitle: 'AWS Serverless Email Platform + Chrome Extension',
-    period: 'Jan 2025 – Present',
-    desc: 'Event-driven serverless disposable email platform — 1,000+ users, 99.9% uptime, GDPR-compliant, AES-256 encryption, 95% cost reduction over traditional hosting.',
-    bullets: [
-      'AWS Lambda, SES, DynamoDB, CDK v2 — handles 1000x traffic spikes automatically',
-      'Chrome extension on Web Store: 500+ active users, one-click generation for 100+ sites',
-      'React.js frontend via CloudFront CDN; RESTful API Gateway serving 10,000+ calls/day',
-      'Sub-60s delivery, automated TTL cleanup, zero-knowledge data processing',
-    ],
-    tags: ['AWS Lambda', 'DynamoDB', 'SES', 'CDK v2', 'React.js', 'Chrome Ext', 'GDPR'],
-    github: 'https://github.com/AjinkyaGokhale',
-    demo: null,
-  },
-  {
-    icon: Camera,
-    name: 'Gesture Recognition',
-    subtitle: 'Time-of-Flight Camera · Python, OpenCV',
-    period: 'Jan 2023',
-    desc: 'Real-time hand gesture recognition with a Time-of-Flight depth camera — 95% classification accuracy with 20% fewer false positives via advanced ML filtering.',
-    bullets: [
-      '95% accuracy in real-time gesture detection and classification',
-      '20% reduction in false positives through ML filtering techniques',
-      'Depth sensing + motion tracking via ToF camera + OpenCV pipeline',
-    ],
-    tags: ['Python', 'OpenCV', 'Computer Vision', 'ToF Camera', 'Machine Learning'],
-    github: 'https://github.com/AjinkyaGokhale',
-    demo: null,
-  },
-  {
-    icon: Cloud,
-    name: 'Stromleser IoT Platform',
-    subtitle: 'Nineti GmbH · AWS IoT Infrastructure',
-    period: 'Feb 2024 – Present',
-    desc: 'Full-stack IoT platform (hardware → firmware → cloud → mobile) managing real-time data from 10,000+ connected devices at 99.9% uptime.',
-    bullets: [
-      '10,000+ IoT devices on EC2, Lambda, DynamoDB, IoT Core — 99.9% uptime',
-      '20+ PCB circuits in KiCad; firmware optimization → 25% faster response time',
-      'MQTT real-time telemetry with CloudWatch monitoring and automated alerting',
-    ],
-    tags: ['AWS IoT Core', 'MQTT', 'ESP32', 'KiCad', 'Lambda', 'DynamoDB', 'Firmware'],
-    github: 'https://github.com/AjinkyaGokhale',
-    demo: null,
-  },
-]
-
-const SKILL_CATEGORIES = [
-  { label: 'Cloud',        items: 'AWS (Lambda · EC2 · S3 · DynamoDB · RDS · IoT Core · SES · API Gateway · CloudFormation · IAM · VPC · CloudWatch) · GCP' },
-  { label: 'Languages',   items: 'Python · Java · JavaScript · C/C++ · Rust · TypeScript · HTML5/CSS3' },
-  { label: 'Backend',     items: 'Node.js · Express.js · RESTful APIs · Microservices · Serverless · Event-Driven Architecture' },
-  { label: 'Frontend',    items: 'React.js · JavaScript ES6+ · Chrome Extension Dev · Responsive Design' },
-  { label: 'IaC & CI/CD', items: 'AWS CDK v2 · CloudFormation · Terraform · GitHub Actions · CodePipeline · Jenkins' },
-  { label: 'Databases',   items: 'DynamoDB · PostgreSQL · MySQL · SQL · NoSQL · Data Modelling' },
-  { label: 'DevOps',      items: 'Docker · CloudWatch · X-Ray · Linux Administration · Performance Monitoring' },
-  { label: 'IoT/HW',      items: 'AWS IoT Core · MQTT · Raspberry Pi · Arduino · ESP32/NodeMCU · KiCad · Fusion 360' },
-  { label: 'Security',    items: 'GDPR · AWS IAM · SSL/TLS · AES-256 · Network Security · Data Privacy' },
-]
+const PROJECT_ICONS = [Mail, Camera, Cloud]
 
 function ProjectCard({ project, index }) {
-  const Icon = project.icon
+  const Icon = PROJECT_ICONS[index] || Mail
   return (
     <motion.div
       className="terminal-card p-4 sm:p-5 flex flex-col gap-3"
@@ -90,14 +33,7 @@ function ProjectCard({ project, index }) {
           </div>
         </div>
         <div className="flex items-center gap-1 flex-shrink-0">
-          {project.demo && (
-            <motion.a href={project.demo} target="_blank" rel="noopener noreferrer"
-              className="text-text-muted p-1 block" whileHover={{ color: '#00ff88', scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}>
-              <ExternalLink size={13} />
-            </motion.a>
-          )}
-          <motion.a href={project.github} target="_blank" rel="noopener noreferrer"
+          <motion.a href="https://github.com/AjinkyaGokhale" target="_blank" rel="noopener noreferrer"
             className="text-text-muted p-1 block" whileHover={{ color: '#00ff88', scale: 1.2 }}
             whileTap={{ scale: 0.9 }}>
             <Github size={13} />
@@ -130,6 +66,9 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Projects() {
+  const { lang } = useLanguage()
+  const t = translations[lang].projects
+
   return (
     <section className="relative pt-20 sm:pt-24 pb-12 sm:pb-16">
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 space-y-8 sm:space-y-10">
@@ -141,14 +80,14 @@ export default function Projects() {
             <span className="text-text-muted">~/portfolio</span>{' '}
             <span className="text-green-bright">$</span> ls -la ./projects
           </p>
-          <h1 className="pixel-heading text-green-bright">PROJECTS.DIR</h1>
+          <h1 className="pixel-heading text-green-bright">{t.pageTitle}</h1>
           <p className="font-mono text-xs sm:text-sm text-text-muted">
-            <span className="text-green-dim">total</span> {PROJECTS.length} items found
+            <span className="text-green-dim">total</span> {t.totalItems(t.projects.length)}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {PROJECTS.map((project, i) => (
+          {t.projects.map((project, i) => (
             <ProjectCard key={project.name} project={project} index={i} />
           ))}
         </div>
@@ -163,11 +102,11 @@ export default function Projects() {
               <span className="text-text-muted">~/portfolio</span>{' '}
               <span className="text-green-bright">$</span> cat skills.json
             </p>
-            <h2 className="pixel-heading text-green-bright">TECHNICAL_SKILLS</h2>
+            <h2 className="pixel-heading text-green-bright">{t.skillsTitle}</h2>
           </div>
           <div className="p-4 sm:p-5 rounded-lg space-y-2.5"
                style={{ background: '#111611', border: '1px solid #1f2e1f' }}>
-            {SKILL_CATEGORIES.map(({ label, items }, i) => (
+            {t.skillCategories.map(({ label, items }, i) => (
               <motion.div key={label}
                 className="flex flex-col sm:flex-row gap-0.5 sm:gap-3 font-mono text-xs"
                 initial={{ opacity: 0, x: -12 }}

@@ -1,23 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Clipboard, FileText, Check } from 'lucide-react'
 import TypewriterText from '../components/TypewriterText'
 import { useToast } from '../components/Toast'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 
 const EMAIL = 'st189203@stud.uni-stuttgart.de'
 const GITHUB_URL = 'https://github.com/AjinkyaGokhale'
 const LINKEDIN_URL = 'https://linkedin.com/in/gokhaleajinkya'
-const TAGS = ['IoT & Cloud', 'Embedded Systems', 'Full-Stack', 'AWS Certified']
 
-const BIO_MAIN = `Founding engineer at Nineti GmbH, building IoT infrastructure at scale — managing production devices on AWS. I work across the full stack: PCB design, embedded firmware, distributed systems, and system design from HLD to deployment. Language-agnostic — C, Python, TypeScript, whatever the problem needs. Based in Stuttgart, tinkering with homelabs and local LLMs in my spare time. Currently writing my Master's thesis — `
-const BIO_HIGHLIGHT = `available full-time from Oct 2026.`
-
-function BioTyper() {
+function BioTyper({ bioMain, bioHighlight }) {
   const [phase, setPhase] = useState('main') // 'main' | 'highlight' | 'done'
+
+  // Reset animation when language changes
+  useEffect(() => { setPhase('main') }, [bioMain])
+
   return (
     <span>
       <TypewriterText
-        text={BIO_MAIN}
+        text={bioMain}
         speed={26}
         delay={1400}
         showCursor={phase === 'main'}
@@ -26,7 +28,7 @@ function BioTyper() {
       />
       {phase !== 'main' && (
         <TypewriterText
-          text={BIO_HIGHLIGHT}
+          text={bioHighlight}
           speed={30}
           delay={0}
           showCursor={phase === 'highlight'}
@@ -59,11 +61,13 @@ const btnStyle = {
 export default function Hero() {
   const showToast = useToast()
   const [copied, setCopied] = useState(false)
+  const { lang } = useLanguage()
+  const t = translations[lang].hero
 
   function copyEmail() {
     navigator.clipboard.writeText(EMAIL).then(() => {
       setCopied(true)
-      showToast('✓ Email copied to clipboard!')
+      showToast(t.toastMsg)
       setTimeout(() => setCopied(false), 2000)
     })
   }
@@ -111,7 +115,7 @@ export default function Hero() {
 
             {/* Tags */}
             <motion.div variants={item} className="flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-xs sm:text-sm">
-              {TAGS.map((tag, i) => (
+              {t.tags.map((tag, i) => (
                 <motion.span
                   key={tag}
                   className="flex items-center gap-1.5 group"
@@ -128,7 +132,7 @@ export default function Hero() {
             {/* Bio */}
             <motion.div variants={item}
               className="font-mono text-xs sm:text-sm leading-relaxed max-w-xl">
-              <BioTyper />
+              <BioTyper bioMain={t.bioMain} bioHighlight={t.bioHighlight} />
             </motion.div>
 
             {/* CTA buttons */}
@@ -156,7 +160,7 @@ export default function Hero() {
                 className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2.5 sm:py-2 rounded-md font-mono text-xs sm:text-sm font-medium hover:border-green-bright hover:text-green-bright w-full sm:w-auto transition-colors"
                 style={btnStyle}>
                 {copied ? <Check size={15} /> : <Clipboard size={15} />}
-                {copied ? 'Copied!' : 'Copy Email'}
+                {copied ? t.copied : t.copyEmail}
               </motion.button>
 
               <motion.button
@@ -164,7 +168,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                 className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2.5 sm:py-2 rounded-md font-mono text-xs sm:text-sm font-medium hover:border-green-bright hover:text-green-bright w-full sm:w-auto transition-colors"
                 style={btnStyle}>
-                <FileText size={15} /> Resume
+                <FileText size={15} /> {t.resume}
               </motion.button>
             </motion.div>
           </motion.div>

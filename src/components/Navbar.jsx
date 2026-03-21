@@ -2,15 +2,11 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Terminal, Menu, X } from 'lucide-react'
 import { cn } from '../lib/utils'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
+import LangToggle from './LangToggle'
 
-const NAV_LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#professional', label: 'Professional' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#resume', label: 'Resume' },
-]
-
-function scrollTo(id) {
+function scrollToSection(id) {
   const el = document.getElementById(id)
   if (el) el.scrollIntoView({ behavior: 'smooth' })
 }
@@ -19,31 +15,50 @@ export default function Navbar() {
   const [active, setActive] = useState('home')
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { lang } = useLanguage()
+  const tn = translations[lang].nav
+
+  const NAV_LINKS = [
+    { href: '#about', label: tn.about },
+    { href: '#professional', label: tn.professional },
+    { href: '#projects', label: tn.projects },
+    { href: '#resume', label: tn.resume },
+  ]
 
   useEffect(() => {
-    const sections = ['home', 'about', 'professional', 'projects', 'resume']
-    const observers = sections.map(id => {
-      const el = document.getElementById(id)
-      if (!el) return null
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActive(id) },
-        { threshold: 0.15, rootMargin: '-56px 0px 0px 0px' }
-      )
-      obs.observe(el)
-      return obs
-    })
+    const sectionIds = ['home', 'about', 'professional', 'projects', 'resume']
+    const OFFSET = 80
+    let rafId = null
 
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const getActive = () => {
+      let current = sectionIds[0]
+      for (const id of sectionIds) {
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top <= OFFSET) current = id
+      }
+      return current
+    }
+
+    const onScroll = () => {
+      if (rafId) return
+      rafId = requestAnimationFrame(() => {
+        rafId = null
+        const next = getActive()
+        setActive(prev => prev === next ? prev : next)
+        setScrolled(window.scrollY > 20)
+      })
+    }
+
+    setActive(getActive())
     window.addEventListener('scroll', onScroll, { passive: true })
-
     return () => {
-      observers.forEach(o => o?.disconnect())
+      if (rafId) cancelAnimationFrame(rafId)
       window.removeEventListener('scroll', onScroll)
     }
   }, [])
 
   function handleNav(href) {
-    scrollTo(href.replace('#', ''))
+    scrollToSection(href.replace('#', ''))
     setMobileOpen(false)
   }
 
@@ -65,7 +80,7 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           {/* Logo */}
           <motion.button
-            onClick={() => scrollTo('home')}
+            onClick={() => scrollToSection('home')}
             className="flex items-center gap-2 font-pixel hover:text-green-neon transition-colors"
             style={{ fontSize: '10px', color: '#00ff88' }}
             whileHover={{ scale: 1.05 }}
@@ -102,27 +117,31 @@ export default function Navbar() {
                 </button>
               )
             })}
+            <LangToggle />
           </div>
 
           {/* Mobile hamburger */}
-          <motion.button
-            className="md:hidden text-text-muted hover:text-green-bright transition-colors"
-            onClick={() => setMobileOpen(v => !v)}
-            aria-label="Toggle menu"
-            whileTap={{ scale: 0.9 }}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={mobileOpen ? 'close' : 'open'}
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.15 }}
-              >
-                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-              </motion.span>
-            </AnimatePresence>
-          </motion.button>
+          <div className="md:hidden flex items-center gap-3">
+            <LangToggle />
+            <motion.button
+              className="text-text-muted hover:text-green-bright transition-colors"
+              onClick={() => setMobileOpen(v => !v)}
+              aria-label="Toggle menu"
+              whileTap={{ scale: 0.9 }}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={mobileOpen ? 'close' : 'open'}
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                </motion.span>
+              </AnimatePresence>
+            </motion.button>
+          </div>
         </div>
       </motion.nav>
 

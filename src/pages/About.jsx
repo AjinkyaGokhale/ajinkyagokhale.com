@@ -1,33 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import TerminalCard from '../components/TerminalCard'
-
-const SKILLS = [
-  { label: 'AWS Cloud (Lambda, EC2, DynamoDB, IoT…)', pct: 92 },
-  { label: 'Python / C/C++ / Embedded Firmware', pct: 85 },
-  { label: 'IoT & Hardware Design (KiCad, ESP32)', pct: 82 },
-  { label: 'React.js / TypeScript / Node.js', pct: 80 },
-  { label: 'Infrastructure as Code (CDK v2, Terraform)', pct: 78 },
-  { label: 'Docker / CI-CD / Linux Admin', pct: 75 },
-]
-
-const HOBBIES = [
-  { label: 'Local LLMs', desc: 'Optimizing inference, quantized models, open-source AI on personal hardware' },
-  { label: 'Self-Hosting', desc: 'Home Assistant & Nextcloud on a personal Kubernetes cluster' },
-  { label: 'Homelab', desc: 'Container orchestration, networking, infrastructure automation' },
-  { label: 'Tech Content', desc: 'Built GPHReviews to 42K+ YouTube subscribers (2017–2023)' },
-]
-
-const CERTS = [
-  { name: 'AWS Certified AI Practitioner', issuer: 'Amazon Web Services' },
-  { name: 'AWS Certified Solutions Architect', issuer: 'Amazon Web Services' },
-]
-
-const LANGS = [
-  { lang: 'English', level: 'Professional Proficiency' },
-  { lang: 'German', level: 'Intermediate (B1)' },
-  { lang: 'Hindi', level: 'Native Speaker' },
-]
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 
 function SkillBar({ label, pct, delay = 0 }) {
   const barRef = useRef(null)
@@ -62,6 +37,9 @@ const sectionHeader = {
 }
 
 export default function About() {
+  const { lang } = useLanguage()
+  const t = translations[lang].about
+
   return (
     <section className="relative pt-20 sm:pt-24 pb-12 sm:pb-16">
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
@@ -73,45 +51,38 @@ export default function About() {
             <span className="text-text-muted">~/portfolio/about</span>{' '}
             <span className="text-green-bright">$</span> cat about.md
           </p>
-          <h1 className="pixel-heading text-green-bright">ABOUT.EXE</h1>
+          <h1 className="pixel-heading text-green-bright">{t.pageTitle}</h1>
         </motion.div>
 
         <TerminalCard title="cat about.md" delay={0}>
           <div className="font-mono text-xs sm:text-sm space-y-4">
             <div>
               <span className="text-green-bright"># </span>
-              <span className="text-text-primary font-semibold">Ajinkya Prashant Gokhale</span>
+              <span className="text-text-primary font-semibold">{t.name}</span>
             </div>
             <div>
-              <p className="text-green-dim text-xs mb-1">## Location</p>
-              <p className="text-text-muted">Stuttgart, Germany</p>
+              <p className="text-green-dim text-xs mb-1">{t.locationLabel}</p>
+              <p className="text-text-muted">{t.location}</p>
             </div>
             <div>
-              <p className="text-green-dim text-xs mb-1">## Role</p>
-              <p className="text-text-muted leading-relaxed">
-                MSc. Infotech student at University of Stuttgart (Computer Hardware/Software Engineering)
-                and Working Student at Nineti GmbH — founding engineer building IoT infrastructure
-                from the ground up: hardware, firmware, cloud, and frontend.
-              </p>
+              <p className="text-green-dim text-xs mb-1">{t.roleLabel}</p>
+              <p className="text-text-muted leading-relaxed">{t.roleText}</p>
             </div>
             <div>
-              <p className="text-green-dim text-xs mb-1">## Background</p>
-              <p className="text-text-muted leading-relaxed">
-                B.Tech in Electronics & Telecommunications from VJTI Mumbai (GPA 8.32/10).
-                Started with PCB design and embedded firmware on ESP32/Arduino, then expanded
-                into cloud architecture and full-stack development.
-              </p>
+              <p className="text-green-dim text-xs mb-1">{t.backgroundLabel}</p>
+              <p className="text-text-muted leading-relaxed">{t.backgroundText}</p>
             </div>
             <div>
-              <p className="text-green-dim text-xs mb-1">## Currently</p>
+              <p className="text-green-dim text-xs mb-1">{t.currentlyLabel}</p>
               <div className="text-text-muted space-y-1">
-                <p><span className="text-green-bright">→</span> Writing Master's thesis @ University of Stuttgart</p>
-                <p><span className="text-green-bright">→</span> Scaling Stromleser IoT to 10,000+ devices on AWS</p>
-                <p><span className="text-green-bright">→</span> Growing SwapMails — serverless email, 1000+ users</p>
-                <p>
-                  <span className="text-green-bright">→</span>{' '}
-                  <span style={{ color: '#00ff88' }}>Available for full-time roles from October 2026</span>
-                </p>
+                {t.currently.map((item, i) => (
+                  <p key={i}>
+                    <span className="text-green-bright">→</span>{' '}
+                    {i === t.currently.length - 1
+                      ? <span style={{ color: '#00ff88' }}>{item}</span>
+                      : item}
+                  </p>
+                ))}
               </div>
             </div>
           </div>
@@ -120,9 +91,9 @@ export default function About() {
         <TerminalCard title="skills --verbose" delay={0.08}>
           <div className="space-y-3 sm:space-y-4">
             <p className="font-mono text-xs text-green-dim">
-              [SKILL_MATRIX] Proficiency levels initialized...
+              {t.skillMatrixInit}
             </p>
-            {SKILLS.map((s, i) => (
+            {t.skills.map((s, i) => (
               <SkillBar key={s.label} label={s.label} pct={s.pct} delay={i * 120} />
             ))}
           </div>
@@ -130,7 +101,7 @@ export default function About() {
 
         <TerminalCard title="cat certifications.json" delay={0.12}>
           <ul className="space-y-3">
-            {CERTS.map((c) => (
+            {t.certs.map((c) => (
               <li key={c.name} className="flex items-center gap-3">
                 <div className="flex-shrink-0 w-12 h-10 flex items-center justify-center rounded p-1.5"
                      style={{ background: '#1a1a1a', border: '1px solid #2d6a2d' }}>
@@ -142,7 +113,7 @@ export default function About() {
                 </div>
                 <span className="ml-auto px-2 py-0.5 rounded text-xs font-mono flex-shrink-0"
                       style={{ background: '#1a2e1a', border: '1px solid #2d6a2d', color: '#00ff88' }}>
-                  ✓ certified
+                  {t.certified}
                 </span>
               </li>
             ))}
@@ -152,9 +123,9 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <TerminalCard title="locale --list" delay={0.05}>
             <ul className="font-mono text-xs sm:text-sm space-y-2.5">
-              {LANGS.map(({ lang, level }) => (
-                <li key={lang} className="flex flex-col xs:flex-row xs:items-center gap-0.5 xs:gap-3">
-                  <span className="text-green-bright w-20 flex-shrink-0">{lang}</span>
+              {t.langs.map(({ lang: langName, level }) => (
+                <li key={langName} className="flex flex-col xs:flex-row xs:items-center gap-0.5 xs:gap-3">
+                  <span className="text-green-bright w-20 flex-shrink-0">{langName}</span>
                   <span className="text-text-muted">{level}</span>
                 </li>
               ))}
@@ -163,7 +134,7 @@ export default function About() {
 
           <TerminalCard title="cat hobbies.txt" delay={0.1}>
             <ul className="font-mono text-xs sm:text-sm space-y-2.5">
-              {HOBBIES.map((h, i) => (
+              {t.hobbies.map((h, i) => (
                 <li key={h.label} className="flex items-start gap-2">
                   <span className="text-green-bright flex-shrink-0">[{String(i).padStart(2, '0')}]</span>
                   <span>

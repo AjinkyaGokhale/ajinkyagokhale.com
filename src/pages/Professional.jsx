@@ -1,68 +1,6 @@
 import { motion } from 'framer-motion'
-
-const TIMELINE = [
-  {
-    period: 'Feb 2024 – Present',
-    company: 'Nineti GmbH (Startup)',
-    role: 'Working Student · Former Intern',
-    location: 'Stuttgart, Germany',
-    bullets: [
-      'Founding Engineer: Spearheaded development of Stromleser IoT devices, mobile app, and AWS backend infrastructure.',
-      'AWS Cloud: Scalable infrastructure managing 10,000+ IoT devices via EC2, Lambda, DynamoDB, IoT Core — 99.9% uptime.',
-      'Hardware Design: Designed and tested 20+ electronic circuits using KiCad (PCB design, component selection).',
-      'Firmware Optimization: 25% reduction in response time and improved power efficiency for battery-operated devices.',
-    ],
-    tags: ['AWS', 'IoT Core', 'DynamoDB', 'Lambda', 'KiCad', 'Firmware', 'ESP32'],
-  },
-  {
-    period: 'May 2020 – Aug 2020',
-    company: 'Nomadists India Pvt. Ltd.',
-    role: 'Full Stack Developer Intern',
-    location: 'Pune, India',
-    bullets: [
-      'Developed responsive web apps with HTML5, CSS3, JavaScript — cross-browser & mobile-first.',
-      'Implemented database solutions with SQL and ORM frameworks, optimizing query performance.',
-      'Collaborated via Git and agile methodologies, maintaining quality through peer reviews and CI.',
-    ],
-    tags: ['HTML5', 'CSS3', 'JavaScript', 'SQL', 'Git', 'Agile'],
-  },
-  {
-    period: 'Spring 2017 – Oct 2023',
-    company: 'GPHReviews',
-    role: 'Tech Content Creator & Community Builder',
-    location: 'YouTube Platform',
-    bullets: [
-      'Built a community of 42,000+ subscribers through consistent tech review content.',
-      'Established partnerships with iOS app developers and tech companies for product launches.',
-      'Created an active Apple technology enthusiast community fostering emerging tech discussions.',
-    ],
-    tags: ['Content Creation', 'Digital Marketing', 'Community Building', 'iOS'],
-  },
-]
-
-const EDUCATION = [
-  {
-    period: 'Oct 2023 – Present',
-    institution: 'University of Stuttgart',
-    degree: 'MSc. Infotech',
-    detail: 'Major: Computer Hardware/Software Engineering',
-    location: 'Stuttgart, Germany',
-  },
-  {
-    period: 'July 2020 – May 2023',
-    institution: 'Veermata Jijabai Technological Institute',
-    degree: 'B.Tech Electronics & Telecommunications',
-    detail: 'GPA: 8.32 / 10',
-    location: 'Mumbai, India',
-  },
-  {
-    period: 'July 2017 – May 2020',
-    institution: 'Government Polytechnic Amravati',
-    degree: 'Diploma in Electronics & Telecommunications',
-    detail: '96.68%',
-    location: 'Amravati, India',
-  },
-]
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 
 function TimelineEntry({ entry, index }) {
   return (
@@ -122,6 +60,9 @@ function TimelineEntry({ entry, index }) {
 }
 
 export default function Professional() {
+  const { lang } = useLanguage()
+  const t = translations[lang].professional
+
   return (
     <section className="relative pt-20 sm:pt-24 pb-12 sm:pb-16">
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
@@ -133,11 +74,11 @@ export default function Professional() {
             <span className="text-text-muted">~/portfolio</span>{' '}
             <span className="text-green-bright">$</span> cat experience.log
           </p>
-          <h1 className="pixel-heading text-green-bright">EXPERIENCE.LOG</h1>
+          <h1 className="pixel-heading text-green-bright">{t.expTitle}</h1>
         </motion.div>
 
         <div className="pt-1">
-          {TIMELINE.map((entry, i) => (
+          {t.timeline.map((entry, i) => (
             <TimelineEntry key={entry.company} entry={entry} index={i} />
           ))}
         </div>
@@ -150,11 +91,11 @@ export default function Professional() {
             <span className="text-text-muted">~/portfolio</span>{' '}
             <span className="text-green-bright">$</span> cat education.log
           </p>
-          <h2 className="pixel-heading text-green-bright">EDUCATION.LOG</h2>
+          <h2 className="pixel-heading text-green-bright">{t.eduTitle}</h2>
         </motion.div>
 
         <div className="space-y-3 sm:space-y-4">
-          {EDUCATION.map((e, i) => (
+          {t.education.map((e, i) => (
             <motion.div key={e.institution}
               className="p-4 sm:p-5 liquid-glass"
               style={{ borderLeft: '3px solid #2d6a2d', borderRadius: '16px' }}
