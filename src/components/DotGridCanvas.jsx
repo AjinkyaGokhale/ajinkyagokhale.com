@@ -18,6 +18,7 @@ export default function DotGridCanvas() {
   const isTouchDeviceRef = useRef(false)
   const attachGyroRef = useRef(null)
   const gyroActiveRef = useRef(false)
+  const hasRealGyroDataRef = useRef(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -53,7 +54,7 @@ export default function DotGridCanvas() {
       glowRef.current.y = lerp(glowRef.current.y, targetRef.current.y, LERP_SPEED)
 
       // Gyro-driven scroll — top/bottom 25% of screen triggers scroll
-      if (gyroActiveRef.current && !touchActiveRef.current) {
+      if (gyroActiveRef.current && hasRealGyroDataRef.current && !touchActiveRef.current) {
         const h = window.innerHeight
         const gy = targetRef.current.y   // use raw gyro target, not lerped glow
         const ZONE = 0.25
@@ -132,6 +133,8 @@ export default function DotGridCanvas() {
     // ── Gyroscope — tilt moves an ambient glow when not touching ──
     function onOrientation(e) {
       if (touchActiveRef.current) return
+      // Only enable gyro scroll once we've received real sensor data
+      if (e.gamma != null && e.beta != null) hasRealGyroDataRef.current = true
       const gamma = Math.max(-45, Math.min(45, e.gamma ?? 0))  // left-right tilt
       const beta  = Math.max(  0, Math.min(90, e.beta  ?? 45)) // forward tilt
       const x = ((gamma + 45) / 90) * window.innerWidth
