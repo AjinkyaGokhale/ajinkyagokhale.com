@@ -1,0 +1,17 @@
+{
+  "name": "Ajinkya Gokhale — Software Engineer Portfolio",
+  "short_name": "Ajinkya Gokhale",
+  "description": "Software Engineer specialising in IoT, AWS Cloud, Embedded Systems & System Design. Stuttgart, Germany.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#00ff88",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

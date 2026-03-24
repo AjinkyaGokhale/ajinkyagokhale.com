@@ -104,7 +104,9 @@ export default function Hero() {
                 <span className="text-text-primary">Ajinkya </span>
                 <TypewriterText text="Gokhale" speed={80} className="text-green-bright text-glow" />
                 <span style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
-                  — Software Engineer | IoT, AWS Cloud, Embedded Systems & System Design
+                  {lang === 'de'
+                    ? '— Softwareentwickler | IoT, AWS Cloud, Eingebettete Systeme & Systemdesign'
+                    : '— Software Engineer | IoT, AWS Cloud, Embedded Systems & System Design'}
                 </span>
               </h1>
               <p className="font-pixel text-green-mid mt-2 tracking-wider leading-relaxed"
@@ -197,7 +199,15 @@ export default function Hero() {
             >
               <img
                 src="/static/avator.png"
-                alt="Ajinkya Gokhale"
+                alt={lang === 'de'
+                  ? 'Ajinkya Gokhale — Softwareentwickler und IoT-Ingenieur in Stuttgart, Deutschland'
+                  : 'Ajinkya Gokhale — Software Engineer and IoT Engineer in Stuttgart, Germany'}
+                title={lang === 'de'
+                  ? 'Ajinkya Gokhale — Softwareentwickler'
+                  : 'Ajinkya Gokhale — Software Engineer'}
+                loading="eager"
+                width="280"
+                height="280"
                 style={{ width: '100%', height: 'auto', display: 'block', filter: 'contrast(1.05) brightness(0.95)' }}
               />
               <div style={{
