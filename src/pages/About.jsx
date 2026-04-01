@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import TerminalCard from '../components/TerminalCard'
 import { useLanguage } from '../context/LanguageContext'
@@ -27,6 +27,64 @@ function SkillBar({ label, pct, delay = 0 }) {
           style={{ width: 0, transition: `width 1.2s cubic-bezier(0.4,0,0.2,1) ${delay}ms` }}
         />
       </div>
+    </div>
+  )
+}
+
+function LearningCerts({ certs, title }) {
+  const [expanded, setExpanded] = useState(false)
+  if (!certs || certs.length === 0) return null
+
+  const linkedinCerts = certs.filter(c => c.issuer === 'LinkedIn')
+  const otherCerts = certs.filter(c => c.issuer !== 'LinkedIn')
+
+  return (
+    <div className="mt-4 pt-4" style={{ borderTop: '1px solid #2a2a2a' }}>
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="flex items-center gap-2 font-mono text-xs text-text-muted hover:text-text-primary transition-colors w-full text-left"
+      >
+        <span style={{ color: '#00ff88' }}>{expanded ? '▼' : '▶'}</span>
+        <span>{title}</span>
+        <span className="ml-auto px-1.5 py-0.5 rounded text-xs font-mono"
+              style={{ background: '#1a1a2e', border: '1px solid #2d2d6a', color: '#8888ff' }}>
+          {certs.length}
+        </span>
+      </button>
+      {expanded && (
+        <div className="mt-3 space-y-2">
+          {linkedinCerts.length > 0 && (
+            <div>
+              <p className="font-mono text-xs text-text-muted mb-2 flex items-center gap-2">
+                <span style={{ color: '#0a66c2' }}>■</span> LinkedIn Learning
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {linkedinCerts.map(c => (
+                  <span key={c.name} className="px-2 py-1 rounded font-mono text-xs"
+                        style={{ background: '#1a1a2e', border: '1px solid #2d2d4a', color: '#aab' }}>
+                    {c.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          {otherCerts.length > 0 && (
+            <div className="mt-2">
+              <p className="font-mono text-xs text-text-muted mb-2 flex items-center gap-2">
+                <span style={{ color: '#a435f0' }}>■</span> Udemy
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {otherCerts.map(c => (
+                  <span key={c.name} className="px-2 py-1 rounded font-mono text-xs"
+                        style={{ background: '#1a1a2e', border: '1px solid #2d2d4a', color: '#aab' }}>
+                    {c.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
@@ -118,6 +176,8 @@ export default function About() {
               </li>
             ))}
           </ul>
+
+          <LearningCerts certs={t.learningCerts} title={t.learningTitle} />
         </TerminalCard>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">

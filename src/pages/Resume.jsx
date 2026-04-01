@@ -84,6 +84,7 @@ export default function Resume() {
   const [open, setOpen] = useState(() => window.innerWidth >= 640)
   const { lang } = useLanguage()
   const t = translations[lang].resume
+  const aboutT = translations[lang].about
 
   return (
     <section className="relative pt-20 sm:pt-24 pb-12 sm:pb-16">
