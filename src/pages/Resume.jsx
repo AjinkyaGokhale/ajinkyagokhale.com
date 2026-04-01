@@ -4,7 +4,10 @@ import { Download, ExternalLink, Mail, Phone, Linkedin, Github, MapPin, ChevronD
 import { useLanguage } from '../context/LanguageContext'
 import { translations } from '../i18n/translations'
 
-const RESUME_PDF = '/static/Andy-cv.pdf'
+const RESUME_PDF = {
+  en: '/static/Andy-Resume.pdf',
+  de: '/static/Andy-Resume-DE.pdf',
+}
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -97,14 +100,14 @@ export default function Resume() {
 
         {/* Toolbar */}
         <motion.div {...fadeUp(0.08)} className="flex flex-wrap gap-2">
-          <motion.a href={RESUME_PDF} download="Ajinkya_Gokhale_CV.pdf"
+          <motion.a href={RESUME_PDF[lang]} download="Ajinkya_Gokhale_CV.pdf"
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <button className="btn-glow flex items-center gap-2 px-4 py-2 rounded-md font-mono text-xs font-medium"
               style={{ background: '#00ff88', color: '#0d0d0d', border: '1px solid #00ff88' }}>
               <Download size={13} /> {t.downloadBtn}
             </button>
           </motion.a>
-          <motion.a href={RESUME_PDF} target="_blank" rel="noopener noreferrer"
+          <motion.a href={RESUME_PDF[lang]} target="_blank" rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <button className="flex items-center gap-2 px-4 py-2 rounded-md font-mono text-xs font-medium transition-colors hover:border-green-bright hover:text-green-bright"
               style={{ background: 'transparent', color: '#d4f0d4', border: '1px solid #2d6a2d' }}>
@@ -132,13 +135,13 @@ export default function Resume() {
             <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#28c840' }} />
             <span className="ml-3 font-mono text-xs" style={{ color: '#666' }}>ajinkya_gokhale_cv.pdf</span>
             <div className="ml-auto flex items-center gap-1.5" onClick={e => e.stopPropagation()}>
-              <a href={RESUME_PDF} download="Ajinkya_Gokhale_CV.pdf"
+              <a href={RESUME_PDF[lang]} download="Ajinkya_Gokhale_CV.pdf"
                  className="flex items-center gap-1.5 px-2.5 py-1 rounded font-mono text-xs transition-colors hover:text-white"
                  style={{ color: '#888', border: '1px solid #2a2a2a' }}>
                 <Download size={11} />
                 <span className="hidden sm:inline">{t.saveBtn}</span>
               </a>
-              <a href={RESUME_PDF} target="_blank" rel="noopener noreferrer"
+              <a href={RESUME_PDF[lang]} target="_blank" rel="noopener noreferrer"
                  className="flex items-center gap-1.5 px-2.5 py-1 rounded font-mono text-xs transition-colors hover:text-white"
                  style={{ color: '#888', border: '1px solid #2a2a2a' }}>
                 <ExternalLink size={11} />
