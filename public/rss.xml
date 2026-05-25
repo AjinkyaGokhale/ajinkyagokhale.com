@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Ajinkya Gokhale — Software Engineer | Softwareentwickler</title>
+    <link>https://ajinkyagokhale.com</link>
+    <atom:link href="https://ajinkyagokhale.com/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Software Engineer specialising in IoT, AWS Cloud, Embedded Systems and System Design. Based in Stuttgart, Germany. | Softwareentwickler mit Schwerpunkt IoT, AWS Cloud, Eingebettete Systeme und Systemdesign. Standort: Stuttgart, Deutschland.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://ajinkyagokhale.com/static/avator.png</url>
+      <title>Ajinkya Gokhale</title>
+      <link>https://ajinkyagokhale.com</link>
+    </image>
+    <item>
+      <title>Portfolio — Ajinkya Gokhale | Software Engineer in Stuttgart</title>
+      <link>https://ajinkyagokhale.com</link>
+      <guid isPermaLink="true">https://ajinkyagokhale.com</guid>
+      <description>Founding engineer at Nineti GmbH. IoT infrastructure, AWS cloud architecture, embedded systems, distributed systems and system design from HLD to deployment. Gründungsingenieur bei Nineti GmbH — IoT-Infrastruktur, AWS-Cloud-Architektur, eingebettete Systeme und Systemdesign.</description>
+      <dc:creator>Ajinkya Gokhale</dc:creator>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
