@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Paper grain overlay — fixed, behind content, never blocks clicks. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: var(--grain);
+    opacity: 0.025;
+    mix-blend-mode: multiply;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: theme('colors.accent');
+    color: theme('colors.paper');
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.accent');
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply font-body text-xs font-semibold uppercase tracking-[0.22em] text-ink-3;
+  }
+
+  .prose-warm {
+    @apply max-w-read text-[1.05rem] leading-[1.75] text-ink-2;
+  }
+  .prose-warm p + p {
+    @apply mt-5;
+  }
+  .prose-warm a {
+    @apply text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent;
+  }
+  .prose-warm h2 {
+    @apply mt-12 mb-3 text-2xl text-ink;
+  }
+  .prose-warm h3 {
+    @apply mt-8 mb-2 text-xl text-ink;
+  }
+  .prose-warm ul {
+    @apply mt-4 list-disc space-y-2 pl-5 marker:text-accent;
+  }
+  .prose-warm code {
+    @apply rounded bg-ink/[0.06] px-1.5 py-0.5 font-body text-[0.9em];
+  }
+
+  /* Scroll-reveal — opacity/transform handled by the reveal action. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s var(--tw-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+  * { animation: none !important; }
+}

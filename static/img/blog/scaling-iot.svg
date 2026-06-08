@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360" viewBox="0 0 600 360" fill="none">
+  <defs>
+    <linearGradient id="iot" x1="0" y1="0" x2="600" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B6BF0" />
+      <stop offset="1" stop-color="#1E3C9C" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" fill="url(#iot)" />
+  <g stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="2">
+    <path d="M96 96 232 64M232 64 372 112M372 112 506 72M96 96 168 208M232 64 320 232M372 112 470 206M168 208 320 232M320 232 470 206M168 208 256 300M320 232 256 300M470 206 416 300M256 300 416 300M320 232 416 300" />
+  </g>
+  <g fill="#FFFFFF" fill-opacity="0.85">
+    <circle cx="96" cy="96" r="6" />
+    <circle cx="232" cy="64" r="6" />
+    <circle cx="506" cy="72" r="6" />
+    <circle cx="168" cy="208" r="6" />
+    <circle cx="470" cy="206" r="6" />
+    <circle cx="256" cy="300" r="6" />
+    <circle cx="416" cy="300" r="6" />
+  </g>
+  <circle cx="372" cy="112" r="22" fill="#FFFFFF" fill-opacity="0.16" />
+  <circle cx="372" cy="112" r="12" fill="#FFFFFF" />
+  <circle cx="320" cy="232" r="9" fill="#FFD8AA" />
+</svg>
