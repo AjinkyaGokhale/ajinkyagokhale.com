@@ -1,6 +1,7 @@
 <script>
   import { t } from '$lib/i18n';
   import Seo from '$lib/components/Seo.svelte';
+  import Lightbox from '$lib/components/Lightbox.svelte';
   import { reveal } from '$lib/actions/reveal';
 
   let { data } = $props();
@@ -52,6 +53,8 @@
   </header>
 
   <div class="prose-warm mt-10">
-    <Content />
+    <Lightbox>
+      <Content />
+    </Lightbox>
   </div>
 </article>
