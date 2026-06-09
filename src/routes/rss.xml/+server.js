@@ -8,11 +8,7 @@ const DESCRIPTION =
   'Notes on engineering, IoT, AWS cloud and building things, by Ajinkya Gokhale — software engineer based in Stuttgart, Germany.';
 
 const escape = (str = '') =>
-  str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 export function GET() {
   const posts = getPosts();

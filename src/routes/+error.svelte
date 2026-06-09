@@ -12,6 +12,7 @@
     href="/"
     class="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 font-body text-sm font-semibold text-paper transition-colors hover:bg-accent"
   >
-    <span aria-hidden="true">←</span> {$t.common.backHome}
+    <span aria-hidden="true">←</span>
+    {$t.common.backHome}
   </a>
 </section>

@@ -7,7 +7,11 @@
   const about = $derived($t.about);
 </script>
 
-<Seo title="About — Ajinkya Gokhale" path="/about" description="Background, skills and certifications of Ajinkya Gokhale, software engineer and founding engineer at Nineti GmbH." />
+<Seo
+  title="About — Ajinkya Gokhale"
+  path="/about"
+  description="Background, skills and certifications of Ajinkya Gokhale, software engineer and founding engineer at Nineti GmbH."
+/>
 
 <PageHeader eyebrow="About" title={about.name} intro={about.roleText} />
 

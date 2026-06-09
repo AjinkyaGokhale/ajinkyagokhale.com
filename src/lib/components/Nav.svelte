@@ -22,7 +22,11 @@
 <header class="sticky top-0 z-50 border-b border-line/70 bg-paper/80 backdrop-blur-md">
   <nav class="shell flex h-16 items-center justify-between gap-4">
     <a href="/" class="group flex items-center" aria-label="Ajinkya Gokhale — Home">
-      <img src="/static/agok.dev.svg" alt="agok.dev" class="h-7 w-auto transition-opacity group-hover:opacity-60" />
+      <img
+        src="/static/agok.dev.svg"
+        alt="agok.dev"
+        class="h-7 w-auto transition-opacity group-hover:opacity-60"
+      />
     </a>
 
     <div class="hidden items-center gap-1 md:flex">
@@ -51,9 +55,21 @@
         onclick={() => (open = !open)}
       >
         <span class="relative block h-3 w-4">
-          <span class="absolute left-0 top-0 h-0.5 w-4 bg-ink transition-transform {open ? 'translate-y-[5px] rotate-45' : ''}"></span>
-          <span class="absolute left-0 top-[5px] h-0.5 w-4 bg-ink transition-opacity {open ? 'opacity-0' : ''}"></span>
-          <span class="absolute left-0 top-[10px] h-0.5 w-4 bg-ink transition-transform {open ? '-translate-y-[5px] -rotate-45' : ''}"></span>
+          <span
+            class="absolute left-0 top-0 h-0.5 w-4 bg-ink transition-transform {open
+              ? 'translate-y-[5px] rotate-45'
+              : ''}"
+          ></span>
+          <span
+            class="absolute left-0 top-[5px] h-0.5 w-4 bg-ink transition-opacity {open
+              ? 'opacity-0'
+              : ''}"
+          ></span>
+          <span
+            class="absolute left-0 top-[10px] h-0.5 w-4 bg-ink transition-transform {open
+              ? '-translate-y-[5px] -rotate-45'
+              : ''}"
+          ></span>
         </span>
       </button>
     </div>
@@ -68,7 +84,9 @@
             onclick={() => (open = false)}
             aria-current={isActive(link.href, $page.url.pathname) ? 'page' : undefined}
             class="rounded-lg px-3 py-2.5 font-body text-base font-medium transition-colors
-              {isActive(link.href, $page.url.pathname) ? 'bg-paper-2 text-accent' : 'text-ink-2 hover:bg-paper-2'}"
+              {isActive(link.href, $page.url.pathname)
+              ? 'bg-paper-2 text-accent'
+              : 'text-ink-2 hover:bg-paper-2'}"
           >
             {$t.nav[link.key]}
           </a>

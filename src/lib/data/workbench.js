@@ -8,12 +8,26 @@ export const workbench = [
   {
     group: 'Cloud & Infra',
     note: 'AWS-first, IaC always.',
-    items: ['AWS (Lambda · EC2 · DynamoDB · IoT Core · SES)', 'AWS CDK v2', 'Terraform', 'Docker', 'Kubernetes', 'GitHub Actions']
+    items: [
+      'AWS (Lambda · EC2 · DynamoDB · IoT Core · SES)',
+      'AWS CDK v2',
+      'Terraform',
+      'Docker',
+      'Kubernetes',
+      'GitHub Actions'
+    ]
   },
   {
     group: 'Hardware',
     note: 'From schematic to soldered board.',
-    items: ['KiCad', 'Fusion 360', 'ESP32 / NodeMCU', 'Raspberry Pi', 'MQTT', 'Logic analyzer + bench PSU']
+    items: [
+      'KiCad',
+      'Fusion 360',
+      'ESP32 / NodeMCU',
+      'Raspberry Pi',
+      'MQTT',
+      'Logic analyzer + bench PSU'
+    ]
   },
   {
     group: 'Editor & OS',
@@ -23,6 +37,12 @@ export const workbench = [
   {
     group: 'Homelab',
     note: 'Self-hosted, over-engineered, on purpose.',
-    items: ['Home Assistant', 'Nextcloud', 'Personal K8s cluster', 'Prometheus', 'Local LLMs (quantized)']
+    items: [
+      'Home Assistant',
+      'Nextcloud',
+      'Personal K8s cluster',
+      'Prometheus',
+      'Local LLMs (quantized)'
+    ]
   }
 ];

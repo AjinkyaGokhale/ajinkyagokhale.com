@@ -4,12 +4,36 @@
 
   // Overlapping photo collage — swap the placeholders for real photos in /static/img.
   const photos = [
-    { src: '/img/collage/collage3.jpg', alt: 'University — linear algebra lecture, Stuttgart', cls: 'z-10 -rotate-6 sm:translate-y-6' },
-    { src: '/img/collage/collage2.jpg', alt: 'Sponsored dev kit from Hackster.io — Cypress PSoC 4100S', cls: 'z-20 rotate-3 sm:-translate-y-2' },
-    { src: '/img/collage/collage1.jpg', alt: 'Graduating — Diploma, Government Polytechnic Amravati', cls: 'z-30 -rotate-2 sm:translate-y-4' },
-    { src: '/img/collage/collage4.jpg', alt: 'Travel — winter in the Alps', cls: 'z-20 rotate-5 sm:-translate-y-3' },
-    { src: '/img/collage/collage6.jpg', alt: 'Prost — biergarten in Stuttgart', cls: 'z-10 -rotate-4 sm:translate-y-5' },
-    { src: '/img/collage/collage5.jpg', alt: 'My first PC build', cls: 'z-20 rotate-2 sm:-translate-y-1' }
+    {
+      src: '/img/collage/collage3.jpg',
+      alt: 'University — linear algebra lecture, Stuttgart',
+      cls: 'z-10 -rotate-6 sm:translate-y-6'
+    },
+    {
+      src: '/img/collage/collage2.jpg',
+      alt: 'Sponsored dev kit from Hackster.io — Cypress PSoC 4100S',
+      cls: 'z-20 rotate-3 sm:-translate-y-2'
+    },
+    {
+      src: '/img/collage/collage1.jpg',
+      alt: 'Graduating — Diploma, Government Polytechnic Amravati',
+      cls: 'z-30 -rotate-2 sm:translate-y-4'
+    },
+    {
+      src: '/img/collage/collage4.jpg',
+      alt: 'Travel — winter in the Alps',
+      cls: 'z-20 rotate-5 sm:-translate-y-3'
+    },
+    {
+      src: '/img/collage/collage6.jpg',
+      alt: 'Prost — biergarten in Stuttgart',
+      cls: 'z-10 -rotate-4 sm:translate-y-5'
+    },
+    {
+      src: '/img/collage/collage5.jpg',
+      alt: 'My first PC build',
+      cls: 'z-20 rotate-2 sm:-translate-y-1'
+    }
   ];
 </script>
 
@@ -21,12 +45,7 @@
           {photo.cls} {i > 0 ? '-ml-10 sm:-ml-12 lg:-ml-14' : ''} {i >= 3 ? 'hidden sm:block' : ''}"
         style="transition-delay: {i * 70}ms"
       >
-        <img
-          src={photo.src}
-          alt={photo.alt}
-          class="h-full w-full object-cover"
-          loading="lazy"
-        />
+        <img src={photo.src} alt={photo.alt} class="h-full w-full object-cover" loading="lazy" />
       </div>
     {/each}
   </div>
