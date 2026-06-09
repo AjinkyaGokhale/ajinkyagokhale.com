@@ -179,7 +179,8 @@ export const translations = {
           ],
           tags: ['Java', 'JavaFX', 'ESP32', 'esptool', 'Maven'],
           repo: 'https://github.com/AjinkyaGokhale/esp-flasher-java',
-          image: '/img/projects/esp-flasher.png'
+          image: '/img/projects/esp-flasher.png',
+          imageFit: 'contain'
         },
         {
           name: 'Gesture Recognition',
@@ -616,7 +617,8 @@ export const translations = {
           ],
           tags: ['Java', 'JavaFX', 'ESP32', 'esptool', 'Maven'],
           repo: 'https://github.com/AjinkyaGokhale/esp-flasher-java',
-          image: '/img/projects/esp-flasher.png'
+          image: '/img/projects/esp-flasher.png',
+          imageFit: 'contain'
         },
         {
           name: 'Gestenerkennung',
