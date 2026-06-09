@@ -75,11 +75,19 @@
           use:reveal={{ delay: i * 60 }}
         >
           {#if project.image}
-            <div class="relative aspect-square overflow-hidden border-b border-line">
+            <div
+              class="relative aspect-square overflow-hidden border-b border-line {project.imageFit ===
+              'contain'
+                ? 'bg-paper-3'
+                : ''}"
+            >
               <img
                 src={project.image}
                 alt={project.name}
-                class="h-full w-full object-cover object-top transition-transform duration-500 ease-soft group-hover:scale-[1.03]"
+                class="h-full w-full transition-transform duration-500 ease-soft group-hover:scale-[1.03] {project.imageFit ===
+                'contain'
+                  ? 'object-contain'
+                  : 'object-cover object-top'}"
                 loading="lazy"
               />
             </div>
