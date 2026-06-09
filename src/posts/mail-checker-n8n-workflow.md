@@ -3,13 +3,12 @@ title: 'Mail checker: an n8n workflow that texts me what matters'
 date: '2026-06-09'
 excerpt: 'Gmail → LLM → Telegram. Twenty minutes of n8n, one trigger, and I never stare at an inbox again.'
 cover: '/img/blog/n8n/mail-checker.png'
-category: 'Automation'
 tags: ['n8n', 'Automation', 'Productivity']
 readingTime: 4
 published: true
 ---
 
-![Mail checker workflow](/img/blog/n8n/mail-checker.png)
+![n8n mail checker workflow: Gmail trigger reads unread email, an OpenAI node summarises it, a Telegram node sends the result to your phone.](/img/blog/n8n/mail-checker.png)
 
 The inbox is a firehose. I don't want to read it — I want to know
 when something needs me. So I built a small n8n workflow that reads
