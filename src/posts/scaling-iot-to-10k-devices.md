@@ -3,6 +3,7 @@ title: Scaling an IoT fleet to 10,000 devices on AWS
 date: '2026-05-12'
 excerpt: Notes from growing the Stromleser platform — what broke, what held, and the boring decisions that mattered most.
 cover: /img/blog/scaling-iot.svg
+category: 'Systems'
 tags: ['IoT', 'AWS', 'Systems']
 readingTime: 6
 published: true

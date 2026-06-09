@@ -3,6 +3,7 @@ title: 'How I auto-grade job fit with n8n and DeepSeek'
 date: '2026-06-09'
 excerpt: 'A LinkedIn job scraper, a relevance-scoring agent, a skill-gap analyser, and a report file. One webhook, no manual filtering.'
 cover: '/img/blog/n8n/linkedin-job-scapper-market-skill-gap.png'
+category: 'Automation'
 tags: ['n8n', 'Automation', 'AI', 'Jobs']
 readingTime: 5
 published: true

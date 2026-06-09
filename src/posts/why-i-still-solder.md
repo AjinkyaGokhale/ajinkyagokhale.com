@@ -3,6 +3,7 @@ title: Why I still solder my own boards
 date: '2026-03-28'
 excerpt: Cloud pays the bills, but the bench keeps me honest. A short case for staying close to the hardware.
 cover: /img/blog/why-solder.svg
+category: 'Hardware'
 tags: ['Hardware', 'Craft']
 readingTime: 4
 published: true
