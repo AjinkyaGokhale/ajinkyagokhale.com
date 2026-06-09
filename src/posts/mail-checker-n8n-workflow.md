@@ -3,6 +3,7 @@ title: 'Mail checker: an n8n workflow that texts me what matters'
 date: '2026-06-09'
 excerpt: 'Gmail → LLM → Telegram. Twenty minutes of n8n, one trigger, and I never stare at an inbox again.'
 cover: '/img/blog/n8n/mail-checker.png'
+category: 'Automation'
 tags: ['n8n', 'Automation', 'Productivity']
 readingTime: 4
 published: true

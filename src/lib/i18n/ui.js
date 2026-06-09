@@ -59,7 +59,13 @@ export const ui = {
     blog: {
       title: 'Blog',
       intro: 'Notes on engineering, IoT and building things.',
-      readMore: 'Read'
+      readMore: 'Read',
+      searchPlaceholder: 'Search posts…',
+      allCategories: 'All',
+      sortLabel: 'Sort',
+      sort: { newest: 'Newest', oldest: 'Oldest', reading: 'Reading time' },
+      results: (n) => `${n} ${n === 1 ? 'post' : 'posts'}`,
+      noResults: 'No posts match your search.'
     },
     common: {
       backHome: 'Back home',
@@ -132,7 +138,13 @@ export const ui = {
     blog: {
       title: 'Blog',
       intro: 'Notizen über Engineering, IoT und das Bauen von Dingen.',
-      readMore: 'Lesen'
+      readMore: 'Lesen',
+      searchPlaceholder: 'Beiträge durchsuchen…',
+      allCategories: 'Alle',
+      sortLabel: 'Sortieren',
+      sort: { newest: 'Neueste', oldest: 'Älteste', reading: 'Lesezeit' },
+      results: (n) => `${n} ${n === 1 ? 'Beitrag' : 'Beiträge'}`,
+      noResults: 'Keine Beiträge passen zu deiner Suche.'
     },
     common: {
       backHome: 'Zur Startseite',
