@@ -6,7 +6,11 @@
   import { workbench } from '$lib/data/workbench';
 </script>
 
-<Seo title="Workbench — Ajinkya Gokhale" path="/workbench" description="The tools, languages and gear Ajinkya Gokhale builds with." />
+<Seo
+  title="Workbench — Ajinkya Gokhale"
+  path="/workbench"
+  description="The tools, languages and gear Ajinkya Gokhale builds with."
+/>
 
 <PageHeader eyebrow="On my bench" title={$t.workbench.title} intro={$t.workbench.intro} />
 
@@ -18,12 +22,18 @@
     >
       <div class="flex items-baseline justify-between gap-3">
         <h2 class="font-display text-xl font-semibold text-ink">{section.group}</h2>
-        <span class="font-display text-2xl font-semibold text-accent/25">{String(i + 1).padStart(2, '0')}</span>
+        <span class="font-display text-2xl font-semibold text-accent/25"
+          >{String(i + 1).padStart(2, '0')}</span
+        >
       </div>
       <p class="mt-1 font-body text-sm italic text-ink-3">{section.note}</p>
       <ul class="mt-4 flex flex-wrap gap-2">
         {#each section.items as item}
-          <li class="rounded-full border border-line bg-paper px-3 py-1 font-body text-sm text-ink-2">{item}</li>
+          <li
+            class="rounded-full border border-line bg-paper px-3 py-1 font-body text-sm text-ink-2"
+          >
+            {item}
+          </li>
         {/each}
       </ul>
     </div>

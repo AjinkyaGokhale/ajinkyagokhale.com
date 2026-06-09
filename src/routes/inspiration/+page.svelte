@@ -20,7 +20,11 @@
   };
 </script>
 
-<Seo title="Inspiration — Ajinkya Gokhale" path="/inspiration" description="People, sites and reading that inspire Ajinkya Gokhale." />
+<Seo
+  title="Inspiration — Ajinkya Gokhale"
+  path="/inspiration"
+  description="People, sites and reading that inspire Ajinkya Gokhale."
+/>
 
 <PageHeader eyebrow="Inspiration" title={$t.inspiration.title} intro={$t.inspiration.intro} />
 
@@ -35,7 +39,9 @@
         class="group block rounded-2xl border border-line bg-paper-2 p-5 shadow-card transition-colors hover:border-accent/40"
       >
         <div class="flex items-center gap-3.5">
-          <div class="relative grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-full border border-line bg-paper font-display text-sm font-semibold text-ink-2">
+          <div
+            class="relative grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-full border border-line bg-paper font-display text-sm font-semibold text-ink-2"
+          >
             <span aria-hidden="true">{initials(person.name)}</span>
             <img
               src={person.avatar}
@@ -47,7 +53,9 @@
           </div>
           <div class="min-w-0">
             <p class="font-display text-lg font-semibold leading-tight text-ink">{person.name}</p>
-            <p class="mt-0.5 font-body text-sm font-semibold text-accent group-hover:underline">{person.handle}</p>
+            <p class="mt-0.5 font-body text-sm font-semibold text-accent group-hover:underline">
+              {person.handle}
+            </p>
           </div>
         </div>
         <p class="mt-3 font-body text-sm text-ink-2">{person.note}</p>
@@ -67,8 +75,14 @@
         rel={item.link ? 'noopener noreferrer' : undefined}
         class="group flex gap-4 rounded-2xl border border-line bg-paper-2 p-4 shadow-card transition-colors hover:border-accent/40"
       >
-        <div class="relative grid h-24 w-16 shrink-0 place-items-center overflow-hidden rounded-md border border-line bg-paper">
-          <span aria-hidden="true" class="px-1 text-center font-display text-[0.65rem] font-semibold uppercase tracking-wide text-ink-3">{item.kind}</span>
+        <div
+          class="relative grid h-24 w-16 shrink-0 place-items-center overflow-hidden rounded-md border border-line bg-paper"
+        >
+          <span
+            aria-hidden="true"
+            class="px-1 text-center font-display text-[0.65rem] font-semibold uppercase tracking-wide text-ink-3"
+            >{item.kind}</span
+          >
           {#if item.cover}
             <img
               src={item.cover}
@@ -82,7 +96,10 @@
         <div class="flex min-w-0 flex-col">
           <p class="font-body font-semibold text-ink group-hover:text-accent">{item.title}</p>
           <p class="mt-0.5 font-body text-sm text-ink-3">{item.author}</p>
-          <span class="mt-auto w-fit rounded-full border border-line px-2.5 py-0.5 font-body text-xs font-medium text-ink-2">{item.kind}</span>
+          <span
+            class="mt-auto w-fit rounded-full border border-line px-2.5 py-0.5 font-body text-xs font-medium text-ink-2"
+            >{item.kind}</span
+          >
         </div>
       </svelte:element>
     {/each}

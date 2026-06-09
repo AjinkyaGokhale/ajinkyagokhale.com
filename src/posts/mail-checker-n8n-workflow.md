@@ -8,6 +8,8 @@ readingTime: 4
 published: true
 ---
 
+![n8n mail checker workflow: Gmail trigger reads unread email, an OpenAI node summarises it, a Telegram node sends the result to your phone.](/img/blog/n8n/mail-checker.png)
+
 The inbox is a firehose. I don't want to read it — I want to know
 when something needs me. So I built a small n8n workflow that reads
 my Gmail on a schedule, asks a model to summarise only what matters,

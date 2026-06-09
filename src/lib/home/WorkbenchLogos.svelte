@@ -24,7 +24,9 @@
   {#each logos as l, i}
     <span
       class="absolute animate-floaty"
-      style="left:{l.x}%; top:{l.y}%; animation-duration:{l.d}s; animation-delay:-{(i * 0.6).toFixed(1)}s;"
+      style="left:{l.x}%; top:{l.y}%; animation-duration:{l.d}s; animation-delay:-{(
+        i * 0.6
+      ).toFixed(1)}s;"
     >
       <img
         src="/img/logos/{l.n}.svg"
