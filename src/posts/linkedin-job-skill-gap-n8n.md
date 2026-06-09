@@ -3,8 +3,7 @@ title: 'n8n LinkedIn job scraper: how I auto-grade job fit with DeepSeek'
 date: '2026-06-09'
 excerpt: 'A personal n8n LinkedIn job scraper workflow that scores each listing against my resume with DeepSeek, drops the noise, and writes a skill gap report for the jobs that survive.'
 cover: '/img/blog/n8n/linkedin-job-scapper-market-skill-gap.png'
-category: 'Automation'
-tags: ['n8n', 'Automation', 'AI', 'Jobs']
+tags: ['n8n', 'LinkedIn', 'Automation', 'AI', 'Job Search']
 readingTime: 5
 published: true
 ---
