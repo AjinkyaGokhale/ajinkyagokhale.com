@@ -9,7 +9,9 @@
   <div class="mb-8 flex items-end justify-between gap-4">
     <div>
       <p class="eyebrow">{$t.home.snapshotEyebrow}</p>
-      <h2 class="mt-2 font-display text-3xl font-semibold text-ink sm:text-4xl">{$t.home.snapshotTitle}</h2>
+      <h2 class="mt-2 font-display text-3xl font-semibold text-ink sm:text-4xl">
+        {$t.home.snapshotTitle}
+      </h2>
     </div>
   </div>
 
@@ -21,14 +23,23 @@
     >
       <WorkbenchLogos />
       <!-- keep the bottom-left text legible over the logos -->
-      <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-paper-2 via-paper-2/70 to-transparent"></div>
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-paper-2 via-paper-2/70 to-transparent"
+      ></div>
       <span class="relative z-10 font-display text-5xl font-semibold text-accent/30">01</span>
       <div class="relative z-10">
-        <h3 class="font-display text-2xl font-semibold text-ink sm:text-3xl">{$t.home.cards.workbench.title}</h3>
+        <h3 class="font-display text-2xl font-semibold text-ink sm:text-3xl">
+          {$t.home.cards.workbench.title}
+        </h3>
         <p class="mt-2 max-w-sm font-body text-ink-2">{$t.home.cards.workbench.desc}</p>
-        <span class="mt-5 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-accent">
+        <span
+          class="mt-5 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-accent"
+        >
           {$t.home.cards.workbench.cta}
-          <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
+          <span
+            class="transition-transform duration-300 group-hover:translate-x-1"
+            aria-hidden="true">→</span
+          >
         </span>
       </div>
     </a>
@@ -42,9 +53,14 @@
       <div>
         <h3 class="font-display text-xl font-semibold text-ink">{$t.home.cards.about.title}</h3>
         <p class="mt-1.5 font-body text-sm text-ink-2">{$t.home.cards.about.desc}</p>
-        <span class="mt-3 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-pine">
+        <span
+          class="mt-3 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-pine"
+        >
           {$t.home.cards.about.cta}
-          <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
+          <span
+            class="transition-transform duration-300 group-hover:translate-x-1"
+            aria-hidden="true">→</span
+          >
         </span>
       </div>
     </a>
@@ -58,9 +74,14 @@
       <div>
         <h3 class="font-display text-xl font-semibold text-ink">{$t.home.cards.projects.title}</h3>
         <p class="mt-1.5 font-body text-sm text-ink-2">{$t.home.cards.projects.desc}</p>
-        <span class="mt-3 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-ochre">
+        <span
+          class="mt-3 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-ochre"
+        >
           {$t.home.cards.projects.cta}
-          <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
+          <span
+            class="transition-transform duration-300 group-hover:translate-x-1"
+            aria-hidden="true">→</span
+          >
         </span>
       </div>
     </a>
@@ -74,9 +95,14 @@
         <span class="font-display text-3xl font-semibold text-accent/30">04</span>
         <h3 class="mt-1 font-display text-xl font-semibold text-ink">{$t.home.cards.call.title}</h3>
         <p class="mt-1.5 max-w-xs font-body text-sm text-ink-2">{$t.home.cards.call.desc}</p>
-        <span class="mt-3 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-accent underline decoration-accent/30 underline-offset-4">
+        <span
+          class="mt-3 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-accent underline decoration-accent/30 underline-offset-4"
+        >
           {$t.home.cards.call.cta}
-          <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
+          <span
+            class="transition-transform duration-300 group-hover:translate-x-1"
+            aria-hidden="true">→</span
+          >
         </span>
       </div>
       <CalendarFloat />
