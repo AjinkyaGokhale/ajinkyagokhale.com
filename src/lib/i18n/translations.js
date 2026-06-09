@@ -167,6 +167,21 @@ export const translations = {
           image: '/img/projects/swapmails.png'
         },
         {
+          name: 'ESP Flasher',
+          subtitle: 'Desktop firmware flasher',
+          status: 'Open source',
+          category: 'Products',
+          desc: 'A JavaFX desktop app for flashing firmware to Espressif chips without the command line.',
+          bullets: [
+            'JavaFX GUI wrapping the official esptool',
+            'One-click ESP32/ESP8266 flashing with auto port detection',
+            'Factory mode for batch flashing; macOS & Windows installers'
+          ],
+          tags: ['Java', 'JavaFX', 'ESP32', 'esptool', 'Maven'],
+          repo: 'https://github.com/AjinkyaGokhale/esp-flasher-java',
+          image: '/img/projects/esp-flasher.png'
+        },
+        {
           name: 'Gesture Recognition',
           subtitle: 'Computer vision',
           period: 'Jan 2023',
@@ -587,6 +602,21 @@ export const translations = {
           tags: ['AWS Lambda', 'DynamoDB', 'SES', 'CDK v2', 'React.js', 'Chrome Ext', 'DSGVO'],
           link: 'https://www.swapmails.com/',
           image: '/img/projects/swapmails.png'
+        },
+        {
+          name: 'ESP Flasher',
+          subtitle: 'Desktop-Firmware-Flasher',
+          status: 'Open Source',
+          category: 'Produkte',
+          desc: 'Eine JavaFX-Desktop-App zum Flashen von Firmware auf Espressif-Chips ohne Kommandozeile.',
+          bullets: [
+            'JavaFX-GUI als Aufsatz auf das offizielle esptool',
+            'Ein-Klick-Flashen von ESP32/ESP8266 mit automatischer Port-Erkennung',
+            'Factory-Modus für Batch-Flashen; macOS- & Windows-Installer'
+          ],
+          tags: ['Java', 'JavaFX', 'ESP32', 'esptool', 'Maven'],
+          repo: 'https://github.com/AjinkyaGokhale/esp-flasher-java',
+          image: '/img/projects/esp-flasher.png'
         },
         {
           name: 'Gestenerkennung',
