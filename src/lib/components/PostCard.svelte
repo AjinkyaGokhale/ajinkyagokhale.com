@@ -22,23 +22,32 @@
   {/if}
 
   <div class="flex flex-1 flex-col p-6">
-    <div class="flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-ink-3">
+    <div
+      class="flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-ink-3"
+    >
       <time datetime={post.date}>{formatted(post.date)}</time>
       {#if post.readingTime}<span>·</span><span>{post.readingTime} min</span>{/if}
     </div>
-    <h3 class="mt-3 font-display text-xl font-semibold leading-snug text-ink transition-colors group-hover:text-accent">
+    <h3
+      class="mt-3 font-display text-xl font-semibold leading-snug text-ink transition-colors group-hover:text-accent"
+    >
       {post.title}
     </h3>
     <p class="mt-2 flex-1 font-body text-sm leading-relaxed text-ink-2">{post.excerpt}</p>
     <div class="mt-4 flex items-center justify-between">
       <div class="flex flex-wrap gap-1.5">
         {#each post.tags ?? [] as tag}
-          <span class="rounded-full border border-line px-2 py-0.5 font-body text-[0.7rem] font-medium text-ink-3">{tag}</span>
+          <span
+            class="rounded-full border border-line px-2 py-0.5 font-body text-[0.7rem] font-medium text-ink-3"
+            >{tag}</span
+          >
         {/each}
       </div>
       <span class="inline-flex items-center gap-1 font-body text-sm font-semibold text-accent">
         {$t.blog.readMore}
-        <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
+        <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"
+          >→</span
+        >
       </span>
     </div>
   </div>

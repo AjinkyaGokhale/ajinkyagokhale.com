@@ -45,7 +45,11 @@
         <ul class="mt-4 space-y-2.5">
           {#each nav as link}
             <li>
-              <a href={link.href} class="font-body text-sm text-ink-2 transition-colors hover:text-accent">{$t.nav[link.key]}</a>
+              <a
+                href={link.href}
+                class="font-body text-sm text-ink-2 transition-colors hover:text-accent"
+                >{$t.nav[link.key]}</a
+              >
             </li>
           {/each}
         </ul>
@@ -63,7 +67,10 @@
                 class="group inline-flex items-center gap-1.5 font-body text-sm text-ink-2 transition-colors hover:text-accent"
               >
                 {link.label}
-                <span class="text-ink-3 transition-transform group-hover:translate-x-0.5 group-hover:text-accent" aria-hidden="true">↗</span>
+                <span
+                  class="text-ink-3 transition-transform group-hover:translate-x-0.5 group-hover:text-accent"
+                  aria-hidden="true">↗</span
+                >
               </a>
             </li>
           {/each}
@@ -72,7 +79,9 @@
     </div>
 
     <!-- Bottom bar -->
-    <div class="mt-12 flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
+    <div
+      class="mt-12 flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between"
+    >
       <p class="font-body text-xs text-ink-3">
         © {year} Ajinkya Gokhale · {$t.footer.made}
         <span class="text-accent">♥</span>

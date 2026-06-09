@@ -8,7 +8,11 @@
   let { data } = $props();
 </script>
 
-<Seo title="Blog — Ajinkya Gokhale" path="/blog" description="Notes on engineering, IoT and building things, by Ajinkya Gokhale." />
+<Seo
+  title="Blog — Ajinkya Gokhale"
+  path="/blog"
+  description="Notes on engineering, IoT and building things, by Ajinkya Gokhale."
+/>
 
 <PageHeader eyebrow="Writing" title={$t.blog.title} intro={$t.blog.intro} />
 
