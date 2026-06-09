@@ -8,6 +8,8 @@ readingTime: 5
 published: true
 ---
 
+![LinkedIn job scraper and skill gap workflow](/img/blog/n8n/linkedin-job-scapper-market-skill-gap.png)
+
 Job hunting has a filtering problem. Hundreds of listings, mostly
 irrelevant, and the only way to find the good ones is to read them
 all. I got tired of that, so I built an n8n workflow that does the
