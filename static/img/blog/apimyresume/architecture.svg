@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" font-family="ui-sans-serif, system-ui, sans-serif" fill="#0f172a">
+  <style>
+    .ink { stroke: #0f172a; stroke-width: 1.5; fill: #ffffff; }
+    .ghost { stroke: #0f172a; stroke-width: 1.5; fill: #f8fafc; stroke-dasharray: 4 3; }
+    .label { font-size: 14px; fill: #0f172a; }
+    .small { font-size: 12px; fill: #475569; }
+    .accent { stroke: #c2410c; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .accent-thin { stroke: #c2410c; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+    .accent-return { stroke: #c2410c; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; marker-end: url(#arrow); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; fill: #0f172a; }
+    .title { font-size: 22px; font-weight: 600; fill: #0f172a; }
+    .pill { font-size: 12px; fill: #0f172a; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c2410c" />
+    </marker>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="title">apimyresume architecture</text>
+  <text x="600" y="62" text-anchor="middle" class="small">One Docker image. Master resume in SQLite, child resumes rendered as PDFs via Typst.</text>
+
+  <!-- Docker container -->
+  <rect class="ink" x="380" y="100" width="440" height="320" rx="14" />
+  <text x="600" y="128" text-anchor="middle" class="label"><tspan font-weight="600">Docker image</tspan> · localhost:3000</text>
+
+  <!-- Dashboard -->
+  <rect class="ink" x="410" y="160" width="170" height="120" rx="8" />
+  <text x="495" y="184" text-anchor="middle" class="label" font-weight="600">Dashboard (SPA)</text>
+  <text x="495" y="210" text-anchor="middle" class="small">· Resume editor</text>
+  <text x="495" y="228" text-anchor="middle" class="small">· PDF preview</text>
+  <text x="495" y="246" text-anchor="middle" class="small">· API key management</text>
+  <text x="495" y="268" text-anchor="middle" class="mono">Bun-served</text>
+
+  <!-- API -->
+  <rect class="ink" x="610" y="160" width="190" height="120" rx="8" />
+  <text x="705" y="184" text-anchor="middle" class="label" font-weight="600">REST API</text>
+  <text x="705" y="206" text-anchor="middle" class="small">Bun · Hono · TypeScript</text>
+  <text x="705" y="232" text-anchor="middle" class="mono">POST /api/tailored-resumes</text>
+  <text x="705" y="250" text-anchor="middle" class="mono">GET  /api/base-resumes</text>
+  <text x="705" y="268" text-anchor="middle" class="mono">GET  /api/templates</text>
+
+  <!-- SQLite -->
+  <ellipse class="ink" cx="600" cy="370" rx="120" ry="22" />
+  <path class="ink" d="M 480 370 a 120 22 0 0 0 240 0" />
+  <text x="600" y="375" text-anchor="middle" class="label" font-weight="600">SQLite</text>
+  <text x="600" y="402" text-anchor="middle" class="small">master + child resumes · one file on a volume</text>
+
+  <!-- Arrow from dashboard to API -->
+  <line class="accent" x1="582" y1="220" x2="608" y2="220" />
+  <text x="595" y="212" text-anchor="middle" class="small">edit</text>
+
+  <!-- Arrow from API to SQLite -->
+  <line class="accent" x1="660" y1="282" x2="612" y2="350" />
+  <text x="648" y="320" class="small">store / fetch</text>
+
+  <!-- Callers (left) -->
+  <rect class="ghost" x="40" y="200" width="290" height="56" rx="8" />
+  <text x="185" y="226" text-anchor="middle" class="label" font-weight="600">AI Agent</text>
+  <text x="185" y="244" text-anchor="middle" class="small">LLM tool call · LangChain / OpenAI / Claude</text>
+
+  <rect class="ghost" x="40" y="266" width="290" height="56" rx="8" />
+  <text x="185" y="292" text-anchor="middle" class="label" font-weight="600">n8n workflow</text>
+  <text x="185" y="310" text-anchor="middle" class="small">HTTP Request node · application/pdf</text>
+
+  <rect class="ghost" x="40" y="332" width="290" height="56" rx="8" />
+  <text x="185" y="358" text-anchor="middle" class="label" font-weight="600">Zapier</text>
+  <text x="185" y="376" text-anchor="middle" class="small">Webhooks action · POST</text>
+
+  <!-- Caller -> API arrows -->
+  <line class="accent" x1="330" y1="228" x2="608" y2="220" />
+  <line class="accent" x1="330" y1="294" x2="608" y2="232" />
+  <line class="accent" x1="330" y1="360" x2="608" y2="244" />
+
+  <!-- Typst / PDF output (right) -->
+  <rect class="ink" x="880" y="190" width="270" height="100" rx="8" />
+  <text x="1015" y="216" text-anchor="middle" class="label" font-weight="600">PDF render</text>
+  <text x="1015" y="238" text-anchor="middle" class="small">Typst compiles the child resume template</text>
+  <text x="1015" y="256" text-anchor="middle" class="small">in milliseconds · version-controlled markup</text>
+  <text x="1015" y="278" text-anchor="middle" class="mono">tailored-resume.pdf</text>
+
+  <line class="accent" x1="800" y1="220" x2="878" y2="220" />
+  <text x="840" y="212" text-anchor="middle" class="small">render</text>
+
+  <!-- PDF to caller (return) -->
+  <path class="accent-return" d="M 1015 290 C 1015 470 700 470 280 410" />
+  <text x="650" y="492" class="small">PDF binary returned to caller</text>
+
+  <!-- Footer note -->
+  <text x="600" y="540" text-anchor="middle" class="small">Master resume is read-only to callers — only the child is mutated per job.</text>
+  <text x="600" y="560" text-anchor="middle" class="small">Self-host with <tspan class="mono">docker compose up -d</tspan> · API key printed in logs on first boot.</text>
+  <text x="600" y="585" text-anchor="middle" class="small" fill="#94a3b8">github.com/AjinkyaGokhale/apimyresume · MIT</text>
+</svg>
