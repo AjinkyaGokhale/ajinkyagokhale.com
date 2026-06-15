@@ -54,14 +54,22 @@
           <mxGeometry x="880" y="190" width="270" height="100" as="geometry" />
         </mxCell>
 
-        <!-- Arrows: callers -> API -->
-        <mxCell id="a1" style="endArrow=classic;html=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#c2410c;strokeWidth=2" edge="1" parent="1" source="agent" target="api">
+        <!-- Arrows: callers -> API. Each enters the API at a different y so they don't collide. -->
+        <!-- AI Agent (top) -> API top entry -->
+        <mxCell id="a1" style="endArrow=classic;html=0;exitX=1;exitY=0.5;entryX=0;entryY=0.15;strokeColor=#c2410c;strokeWidth=2" edge="1" parent="1" source="agent" target="api">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <!-- n8n (middle) -> API middle entry -->
         <mxCell id="a2" style="endArrow=classic;html=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#c2410c;strokeWidth=2" edge="1" parent="1" source="n8n" target="api">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="a3" style="endArrow=classic;html=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#c2410c;strokeWidth=2" edge="1" parent="1" source="zapier" target="api">
+        <!-- Zapier (bottom) -> API bottom entry -->
+        <mxCell id="a3" style="endArrow=classic;html=0;exitX=1;exitY=0.5;entryX=0;entryY=0.85;strokeColor=#c2410c;strokeWidth=2" edge="1" parent="1" source="zapier" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Dashboard -> API. Exit from the right edge near the bottom; entry on the left edge of API near the top. Routes around the dashboard's text. -->
+        <mxCell id="a_dash" style="endArrow=classic;html=0;exitX=1;exitY=0.85;entryX=0;entryY=0.3;strokeColor=#0f172a;strokeWidth=1.5" edge="1" parent="1" source="dashboard" target="api">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
@@ -75,8 +83,8 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Arrow: PDF -> caller (return) -->
-        <mxCell id="a6" style="endArrow=classic;html=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0.5;curved=1;strokeColor=#c2410c;strokeWidth=2;dashed=1" edge="1" parent="1" source="pdf" target="agent">
+        <!-- Arrow: PDF -> caller (return), curved. Hits the bottom of the AI Agent box. -->
+        <mxCell id="a6" style="endArrow=classic;html=0;exitX=0.5;exitY=1;entryX=0.5;entryY=1;curved=1;strokeColor=#c2410c;strokeWidth=2;dashed=1" edge="1" parent="1" source="pdf" target="agent">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1015" y="470" />
