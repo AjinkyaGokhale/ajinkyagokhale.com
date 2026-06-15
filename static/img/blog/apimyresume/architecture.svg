@@ -72,7 +72,6 @@
   <line class="accent" x1="330" y1="228" x2="608" y2="220" />
   <line class="accent" x1="330" y1="294" x2="608" y2="232" />
   <line class="accent" x1="330" y1="360" x2="608" y2="244" />
-  <text x="460" y="200" class="small">{masterResumeId, jobDescription, emphasis}</text>
 
   <!-- Typst / PDF output (right) -->
   <rect class="ink" x="880" y="190" width="270" height="100" rx="8" />
