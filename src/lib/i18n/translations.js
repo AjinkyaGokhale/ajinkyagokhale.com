@@ -151,6 +151,24 @@ export const translations = {
       // When absent, the featured card falls back to a type-driven panel.
       projects: [
         {
+          name: 'APIMyResume',
+          subtitle: 'Tailored resume API',
+          period: 'Jun 2025 – Present',
+          status: 'Live',
+          category: 'Products',
+          desc: 'Self-hosted REST API that keeps one master resume and turns it into unlimited tailored PDFs — render an existing base, generate a fresh targeted version, or let an AI agent rewrite bullets and inject keywords per job.',
+          bullets: [
+            'Bun + Hono + SQLite, ~400 lines of TypeScript — single Docker image',
+            'Native Typst render pipeline, pixel-perfect PDFs in milliseconds',
+            'AI-agent friendly: GET /content + PATCH /bases rewire bullets and skills for the job',
+            'Built-in dashboard for browsing resumes, previewing PDFs, and managing API keys'
+          ],
+          tags: ['Bun', 'Hono', 'TypeScript', 'Typst', 'SQLite', 'Docker', 'REST API'],
+          link: 'https://resume.agok.dev',
+          repo: 'https://github.com/AjinkyaGokhale/apimyresume',
+          image: '/img/projects/apimyresume.png'
+        },
+        {
           name: 'SwapMails',
           subtitle: 'Serverless email platform',
           period: 'Jan 2025 – Present',
@@ -361,6 +379,18 @@ export const translations = {
         }
       ],
       projects: [
+        {
+          period: 'Jun 2025 – Present',
+          title: 'APIMyResume — Tailored Resume API',
+          subtitle: 'Bun · Hono · Typst · SQLite',
+          bullets: [
+            'Self-hosted REST API: keep one master resume, render unlimited tailored PDFs per job.',
+            'Native Typst render pipeline; ~400 lines of TypeScript, single Docker image, SQLite storage.',
+            'AI-agent integration via GET /content + PATCH /bases — rewrite bullets, inject keywords, regenerate.',
+            'Built-in dashboard for browsing resumes, previewing PDFs, and managing API keys.'
+          ],
+          tags: ['Bun', 'Hono', 'TypeScript', 'Typst', 'SQLite', 'Docker', 'REST API']
+        },
         {
           period: 'Jan 2025 – Present',
           title: 'SwapMails — AWS Serverless Email Platform',
@@ -589,6 +619,24 @@ export const translations = {
       // Fehlt das Bild, zeigt die Featured-Karte ein typografisches Panel.
       projects: [
         {
+          name: 'APIMyResume',
+          subtitle: 'Maßgeschneiderte Lebenslauf-API',
+          period: 'Jun 2025 – Heute',
+          status: 'Live',
+          category: 'Produkte',
+          desc: 'Selbstgehostete REST-API, die einen Master-Lebenslauf verwaltet und in unbegrenzt viele maßgeschneiderte PDFs verwandelt — bestehende Basis rendern, neue zielgerichtete Version erstellen oder von einem KI-Agenten Bullets und Keywords pro Job umschreiben lassen.',
+          bullets: [
+            'Bun + Hono + SQLite, ~400 Zeilen TypeScript — ein einzelnes Docker-Image',
+            'Native Typst-Render-Pipeline, pixelgenaue PDFs in Millisekunden',
+            'KI-Agent-fähig: GET /content + PATCH /bases ändern Bullets und Skills pro Stellenausschreibung',
+            'Integriertes Dashboard zum Verwalten von Lebensläufen, PDF-Vorschau und API-Keys'
+          ],
+          tags: ['Bun', 'Hono', 'TypeScript', 'Typst', 'SQLite', 'Docker', 'REST API'],
+          link: 'https://resume.agok.dev',
+          repo: 'https://github.com/AjinkyaGokhale/apimyresume',
+          image: '/img/projects/apimyresume.png'
+        },
+        {
           name: 'SwapMails',
           subtitle: 'Serverlose E-Mail-Plattform',
           period: 'Jan 2025 – Heute',
@@ -799,6 +847,18 @@ export const translations = {
         }
       ],
       projects: [
+        {
+          period: 'Jun 2025 – Heute',
+          title: 'APIMyResume — Maßgeschneiderte Lebenslauf-API',
+          subtitle: 'Bun · Hono · Typst · SQLite',
+          bullets: [
+            'Selbstgehostete REST-API: einen Master-Lebenslauf pflegen, unbegrenzt viele zielgerichtete PDFs pro Job rendern.',
+            'Native Typst-Render-Pipeline; ~400 Zeilen TypeScript, ein Docker-Image, SQLite-Speicher.',
+            'KI-Agent-Integration via GET /content + PATCH /bases — Bullets umschreiben, Keywords injizieren, neu rendern.',
+            'Integriertes Dashboard zum Verwalten von Lebensläufen, PDF-Vorschau und API-Keys.'
+          ],
+          tags: ['Bun', 'Hono', 'TypeScript', 'Typst', 'SQLite', 'Docker', 'REST API']
+        },
         {
           period: 'Jan 2025 – Heute',
           title: 'SwapMails — AWS Serverlose E-Mail-Plattform',
