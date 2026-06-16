@@ -164,7 +164,7 @@ export const translations = {
             'Built-in dashboard for browsing resumes, previewing PDFs, and managing API keys'
           ],
           tags: ['Bun', 'Hono', 'TypeScript', 'Typst', 'SQLite', 'Docker', 'REST API'],
-          link: 'https://resume.agok.dev',
+          link: 'https://apimyresume.com',
           repo: 'https://github.com/AjinkyaGokhale/apimyresume',
           image: '/img/projects/apimyresume.png'
         },
@@ -632,7 +632,7 @@ export const translations = {
             'Integriertes Dashboard zum Verwalten von Lebensläufen, PDF-Vorschau und API-Keys'
           ],
           tags: ['Bun', 'Hono', 'TypeScript', 'Typst', 'SQLite', 'Docker', 'REST API'],
-          link: 'https://resume.agok.dev',
+          link: 'https://apimyresume.com',
           repo: 'https://github.com/AjinkyaGokhale/apimyresume',
           image: '/img/projects/apimyresume.png'
         },
