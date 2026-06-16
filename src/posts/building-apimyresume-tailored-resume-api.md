@@ -2,14 +2,14 @@
 title: 'apimyresume: a self-hosted resume tailoring API for job-specific CVs'
 date: '2026-06-15'
 excerpt: 'How I built apimyresume.com — a self-hosted resume tailoring API that turns one profile-specific master resume into a job-specific PDF for every application. Wire it into n8n, an AI agent, or Zapier, and never hand-edit a CV again.'
-cover: '/img/blog/apimyresume/architecture.svg'
+cover: '/img/blog/apimyresume/architecture.png'
 category: 'Automation'
 tags: ['Bun', 'Hono', 'Typst', 'API', 'Job Search', 'Docker', 'Self-hosted', 'SQLite', 'AI Agents', 'Resume Tailoring', 'ATS']
 readingTime: 7
 published: true
 ---
 
-![apimyresume architecture: a single Docker image on port 3000 hosts a dashboard for editing profile-specific master resumes and a Bun + Hono REST API, backed by SQLite. The API receives a job description from an AI agent, an n8n workflow, or Zapier, uses an LLM to rewrite bullets and inject keywords from the job description, and returns a tailored PDF rendered via Typst.](/img/blog/apimyresume/architecture.svg)
+![apimyresume architecture: a single Docker image on port 3000 hosts a dashboard for editing profile-specific master resumes and a Bun + Hono REST API, backed by SQLite. The API receives a job description from an AI agent, an n8n workflow, or Zapier, uses an LLM to rewrite bullets and inject keywords from the job description, and returns a tailored PDF rendered via Typst.](/img/blog/apimyresume/architecture.png)
 
 I built a thing. It's called [apimyresume.com](https://apimyresume.com), and it's a self-hosted **resume tailoring API**: a small service that takes a master resume plus a job description and returns a job-specific PDF. The whole project is [open source on GitHub](https://github.com/AjinkyaGokhale/apimyresume), runs in a single Docker container, and is designed to be called by an AI agent — not a human.
 
