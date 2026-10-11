@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars -- `handler` is the CloudFront Functions entry point, invoked by the edge runtime */
 // CloudFront Viewer Request function: map clean URLs to their prerendered .html files.
 //
 // This site is a fully-prerendered multi-page app (adapter-static, strict: true).
